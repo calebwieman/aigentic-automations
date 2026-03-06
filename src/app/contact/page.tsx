@@ -2,49 +2,28 @@
 
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import { useState } from "react";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
-    alert("Thanks for reaching out! We'll get back to you soon.");
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const company = formData.get("company") as string;
+    const message = formData.get("message") as string;
+    
+    const mailtoSubject = encodeURIComponent(`New Contact Form Submission from ${name}`);
+    const mailtoBody = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`
+    );
+    
+    window.location.href = `mailto:aigenticautomations@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-8 w-auto" />
-            <span className="text-white font-semibold text-lg">Aigentic Automations</span>
-          </a>
-          
-          <div className="hidden md:flex items-center gap-6">
-            <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
-            <a href="/#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How it Works</a>
-            <a href="/#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
-            <a href="/#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
-            <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
-              Get Started
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      <div className="pt-24 pb-12 px-6">
+    <div className="min-h-screen pt-24 pb-12 px-6">
       <div className="max-w-4xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-12">
@@ -104,8 +83,6 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-
-
             </div>
 
             {/* Contact Form */}
@@ -119,8 +96,6 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
                     placeholder="Your name"
@@ -133,8 +108,6 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
                     placeholder="you@company.com"
@@ -147,8 +120,6 @@ export default function Contact() {
                     type="text"
                     id="company"
                     name="company"
-                    value={formData.company}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors"
                     placeholder="Your company"
                   />
@@ -159,8 +130,6 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     rows={4}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
