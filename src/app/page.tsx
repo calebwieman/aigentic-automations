@@ -15,7 +15,7 @@ export default function Home() {
             <span className="text-white font-semibold text-lg">Aigentic Automations</span>
           </a>
           
-          <div className="hidden md:flex items-center justify-center gap-8">
+          <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How it Works</a>
             <a href="#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
