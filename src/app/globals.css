@@ -162,6 +162,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Solid glass - fully opaque */
+.glass-solid {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);

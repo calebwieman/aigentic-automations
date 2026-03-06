@@ -29,7 +29,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6">
+      <section className="relative pt-40 pb-32 bg-white/[0.02] px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <motion.div
@@ -97,7 +97,7 @@ export default function Home() {
 
       {/* Features */}
       <ScrollReveal>
-        <section id="features" className="py-24 px-6">
+        <section id="features" className="py-24 bg-white/[0.02] px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4">Everything you need to <span className="gradient-text-accent">automate</span></h2>
@@ -115,7 +115,7 @@ export default function Home() {
               ].map((feature, i) => (
                 <ScrollReveal key={feature.title} delay={i * 0.1}>
                   <TiltCard>
-                    <div className="glass rounded-2xl p-8 h-56 hover:bg-white/5 transition-all duration-300 group">
+                    <div className="glass-solid rounded-2xl p-8 h-56 transition-all duration-300 group">
                       <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                         <svg className={`w-6 h-6 text-${feature.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
@@ -164,7 +164,7 @@ export default function Home() {
 
       {/* Why Choose Us */}
       <ScrollReveal>
-        <section className="py-24 px-6">
+        <section className="py-24 px-6 bg-white/[0.02]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4">Why <span className="gradient-text-accent">choose us</span></h2>
@@ -180,7 +180,7 @@ export default function Home() {
               ].map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 0.1}>
                   <TiltCard>
-                    <div className="glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-300 group">
+                    <div className="glass-solid rounded-2xl p-6 transition-all duration-300 group">
                       <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                         <svg className={`w-6 h-6 text-${item.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
@@ -213,7 +213,7 @@ export default function Home() {
               ].map((testimonial, i) => (
                 <ScrollReveal key={testimonial.name} delay={i * 0.15}>
                   <TiltCard>
-                    <div className="glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-300 group">
+                    <div className="glass-solid rounded-2xl p-6 transition-all duration-300 group">
                       <p className="text-gray-300 mb-4 group-hover:text-white transition-colors">"{testimonial.quote}"</p>
                       <div className="flex items-center gap-3">
                         <div className={`w-10 h-10 rounded-full bg-${testimonial.color}-500/30 flex items-center justify-center group-hover:scale-110 transition-transform`}>
@@ -235,7 +235,7 @@ export default function Home() {
 
       {/* Pricing */}
       <ScrollReveal>
-        <section id="pricing" className="py-24 px-6">
+        <section id="pricing" className="py-24 px-6 bg-white/[0.02]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4">Simple, <span className="gradient-text-accent">transparent</span> pricing</h2>
@@ -245,7 +245,7 @@ export default function Home() {
             <ScrollReveal>
               <div className="max-w-2xl mx-auto">
                 <TiltCard>
-                  <div className="glass rounded-2xl p-8 border-2 border-blue-500/30 hover:border-blue-500/60 transition-all duration-300 group">
+                  <div className="glass-solid rounded-2xl p-8 border-2 border-blue-500/30 hover:border-blue-500/60 transition-all duration-300 group">
                     <div className="text-center mb-8">
                       <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Custom Automation Package</h3>
                       <p className="text-gray-400">Tailored to your specific business needs</p>
@@ -292,7 +292,7 @@ export default function Home() {
                 { q: "Can I cancel anytime?", a: "Yes, you can cancel with no penalties." },
               ].map((faq, i) => (
                 <ScrollReveal key={faq.q} delay={i * 0.1}>
-                  <div className="glass rounded-xl p-6 hover:bg-white/5 transition-all duration-300 group cursor-pointer">
+                  <div className="glass-solid rounded-xl p-6 transition-all duration-300 group cursor-pointer">
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
                       {faq.q}
                     </h3>
@@ -307,9 +307,9 @@ export default function Home() {
 
       {/* CTA */}
       <ScrollReveal>
-        <section className="py-24 px-6">
+        <section className="py-24 px-6 bg-white/[0.02]">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="glass rounded-3xl p-12 hover:shadow-[0_0_60px_rgba(59,130,246,0.2)] transition-all duration-500 group">
+            <div className="glass-solid rounded-3xl p-12 hover:shadow-[0_0_60px_rgba(59,130,246,0.2)] transition-all duration-500 group">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to <span className="gradient-text-accent">save time</span>?</h2>
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Join hundreds of businesses already benefiting from custom automations.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
