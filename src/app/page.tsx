@@ -11,7 +11,8 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 glass">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src="/logo.png" alt="Aigentic Automations" className="h-8 w-auto" />
+            <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-8 w-auto" />
+            <span className="text-white font-semibold text-lg">Aigentic Automations</span>
           </a>
           
           <div className="hidden md:flex items-center gap-8">
@@ -332,7 +333,7 @@ export default function Home() {
         <footer className="py-12 px-6 border-t border-white/5">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Aigentic Automations" className="h-6 w-auto" />
+              <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-6 w-auto" />
               <span className="text-gray-400 text-sm">© 2026 Aigentic Automations</span>
             </div>
             
