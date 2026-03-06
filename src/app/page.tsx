@@ -143,7 +143,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { num: "1", title: "Tell Us What You Need", desc: "Share your business processes and pain points.", hover: "orange" },
+                { num: "1", title: "Tell Us What You Need", desc: "Share your business processes and pain points.", hover: "blue" },
                 { num: "2", title: "We Build It For You", desc: "Our team creates custom automations tailored to your needs.", hover: "none" },
                 { num: "3", title: "Watch It Run", desc: "Your automations start working immediately.", hover: "orange" },
               ].map((step, i) => (
