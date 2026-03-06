@@ -37,7 +37,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
             >
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
               <span className="text-sm text-gray-300">Now available for small businesses</span>
             </motion.div>
 
