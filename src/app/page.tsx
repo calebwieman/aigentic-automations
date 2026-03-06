@@ -143,16 +143,16 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { num: "1", title: "Tell Us What You Need", desc: "Share your business processes and pain points.", color: "blue" },
-                { num: "2", title: "We Build It For You", desc: "Our team creates custom automations tailored to your needs.", color: "orange" },
-                { num: "3", title: "Watch It Run", desc: "Your automations start working immediately.", color: "green" },
+                { num: "1", title: "Tell Us What You Need", desc: "Share your business processes and pain points.", hover: "orange" },
+                { num: "2", title: "We Build It For You", desc: "Our team creates custom automations tailored to your needs.", hover: "none" },
+                { num: "3", title: "Watch It Run", desc: "Your automations start working immediately.", hover: "orange" },
               ].map((step, i) => (
                 <ScrollReveal key={step.num} delay={i * 0.15}>
                   <div className="text-center group">
-                    <div className={`w-20 h-20 rounded-full bg-${step.color}-500/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-${step.color}-500/30 transition-all duration-300`}>
-                      <span className={`text-3xl font-bold text-${step.color}-400 group-hover:text-${step.color}-300`}>{step.num}</span>
+                    <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-white/10 transition-all duration-300">
+                      <span className="text-3xl font-bold text-white/80">{step.num}</span>
                     </div>
-                    <h3 className={`text-xl font-semibold mb-3 text-white group-hover:text-${step.color}-400 transition-colors`}>{step.title}</h3>
+                    <h3 className={`text-xl font-semibold mb-3 text-white ${step.hover !== 'none' ? `group-hover:text-${step.hover}-400` : ''} transition-colors`}>{step.title}</h3>
                     <p className="text-gray-400">{step.desc}</p>
                   </div>
                 </ScrollReveal>
