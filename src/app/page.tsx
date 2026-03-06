@@ -10,12 +10,13 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center">
+          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center overflow-hidden">
+              {/* Replace with actual logo: <img src="/logo.png" alt="Aigentic" className="w-full h-full object-cover" /> */}
               <span className="text-white font-bold text-sm">A</span>
             </div>
-            <span className="text-white font-semibold text-lg">Aigentic</span>
-          </div>
+            <span className="text-white font-semibold text-lg">Aigentic Automations</span>
+          </a>
           
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
