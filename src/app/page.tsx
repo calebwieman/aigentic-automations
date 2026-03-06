@@ -18,18 +18,10 @@ export default function Home() {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">
-              Features
-            </a>
-            <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">
-              How it Works
-            </a>
-            <a href="#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">
-              Pricing
-            </a>
-            <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">
-              FAQ
-            </a>
+            <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
+            <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How it Works</a>
+            <a href="#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
+            <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
           </div>
           
           <button className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
@@ -78,10 +70,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]">
+              <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105">
                 Start Building Free
               </button>
-              <button className="px-8 py-4 glass text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
+              <button className="px-8 py-4 glass text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105">
                 Watch Demo
               </button>
             </motion.div>
@@ -105,124 +97,38 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
-      {/* Features Preview */}
+      {/* Features */}
       <ScrollReveal>
         <section id="features" className="py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">
-                Everything you need to <span className="gradient-text-accent">automate</span>
-              </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Powerful features designed for small businesses and founders who want to scale without adding headcount.
-              </p>
+              <h2 className="text-4xl font-bold mb-4">Everything you need to <span className="gradient-text-accent">automate</span></h2>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">Powerful features designed for small businesses and founders.</p>
             </div>
 
-            {/* Bento Grid - 6 cards in uniform 3x2 grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              
-              {/* Card 1: Visual Workflow Builder */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-56">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Visual Workflow Builder
-                  </h3>
-                  <p className="text-gray-400">
-                    Build complex automations with our drag-and-drop visual builder.
-                  </p>
-                </div>
-              </TiltCard>
-
-              {/* Card 2: 24/7 Running */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-56">
-                  <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    24/7 Running
-                  </h3>
-                  <p className="text-gray-400">
-                    Your automations work around the clock.
-                  </p>
-                </div>
-              </TiltCard>
-
-              {/* Card 3: Enterprise Security */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-56">
-                  <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Enterprise Security
-                  </h3>
-                  <p className="text-gray-400">
-                    Bank-level encryption keeps your data safe.
-                  </p>
-                </div>
-              </TiltCard>
-
-              {/* Card 4: 100+ Integrations */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-56">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    100+ Integrations
-                  </h3>
-                  <p className="text-gray-400">
-                    Connect with Slack, Gmail, Notion, and more.
-                  </p>
-                </div>
-              </TiltCard>
-
-              {/* Card 5: Real-time Analytics */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-56">
-                  <div className="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Real-time Analytics
-                  </h3>
-                  <p className="text-gray-400">
-                    Track performance and see results.
-                  </p>
-                </div>
-              </TiltCard>
-
-              {/* Card 6: Easy Setup */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-56">
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Easy Setup
-                  </h3>
-                  <p className="text-gray-400">
-                    We build everything for you. No coding needed.
-                  </p>
-                </div>
-              </TiltCard>
-
+              {[
+                { title: "Visual Workflow Builder", desc: "Build complex automations with our drag-and-drop visual builder.", color: "blue", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+                { title: "24/7 Running", desc: "Your automations work around the clock.", color: "orange", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { title: "Enterprise Security", desc: "Bank-level encryption keeps your data safe.", color: "green", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
+                { title: "100+ Integrations", desc: "Connect with Slack, Gmail, Notion, and more.", color: "purple", icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" },
+                { title: "Real-time Analytics", desc: "Track performance and see results.", color: "pink", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
+                { title: "Easy Setup", desc: "We build everything for you. No coding needed.", color: "cyan", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+              ].map((feature, i) => (
+                <ScrollReveal key={feature.title} delay={i * 0.1}>
+                  <TiltCard>
+                    <div className="glass rounded-2xl p-8 h-56 hover:bg-white/5 transition-all duration-300 group">
+                      <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                        <svg className={`w-6 h-6 text-${feature.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors">{feature.title}</h3>
+                      <p className="text-gray-400">{feature.desc}</p>
+                    </div>
+                  </TiltCard>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
@@ -233,38 +139,26 @@ export default function Home() {
         <section id="how-it-works" className="py-24 px-6 bg-white/[0.02]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">
-                How it <span className="gradient-text-accent">works</span>
-              </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                We set everything up for you. Just tell us what you need.
-              </p>
+              <h2 className="text-4xl font-bold mb-4">How it <span className="gradient-text-accent">works</span></h2>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">We set everything up for you. Just tell us what you need.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-blue-400">1</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">Tell Us What You Need</h3>
-                <p className="text-gray-400">Share your business processes and pain points. We'll listen and understand your workflow.</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-orange-500/20 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-orange-400">2</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">We Build It For You</h3>
-                <p className="text-gray-400">Our team creates custom automations tailored to your specific business needs.</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-green-400">3</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">Watch It Run</h3>
-                <p className="text-gray-400">Your automations start working immediately. Sit back and enjoy your free time.</p>
-              </div>
+              {[
+                { num: "1", title: "Tell Us What You Need", desc: "Share your business processes and pain points.", color: "blue" },
+                { num: "2", title: "We Build It For You", desc: "Our team creates custom automations tailored to your needs.", color: "orange" },
+                { num: "3", title: "Watch It Run", desc: "Your automations start working immediately.", color: "green" },
+              ].map((step, i) => (
+                <ScrollReveal key={step.num} delay={i * 0.15}>
+                  <div className="text-center group">
+                    <div className={`w-20 h-20 rounded-full bg-${step.color}-500/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-${step.color}-500/30 transition-all duration-300`}>
+                      <span className={`text-3xl font-bold text-${step.color}-400 group-hover:text-${step.color}-300`}>{step.num}</span>
+                    </div>
+                    <h3 className={`text-xl font-semibold mb-3 text-white group-hover:text-${step.color}-400 transition-colors`}>{step.title}</h3>
+                    <p className="text-gray-400">{step.desc}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
@@ -275,52 +169,31 @@ export default function Home() {
         <section className="py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">
-                Why <span className="gradient-text-accent">choose us</span>
-              </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">We're not just another automation tool. We're your partner in efficiency.</p>
+              <h2 className="text-4xl font-bold mb-4">Why <span className="gradient-text-accent">choose us</span></h2>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">We're your partner in efficiency.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="glass rounded-2xl p-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">Affordable</h3>
-                <p className="text-gray-400 text-sm">A fraction of the cost of hiring an employee or using enterprise tools.</p>
-              </div>
-
-              <div className="glass rounded-2xl p-6">
-                <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">Fast Setup</h3>
-                <p className="text-gray-400 text-sm">We build everything for you. No learning curve, no technical knowledge needed.</p>
-              </div>
-
-              <div className="glass rounded-2xl p-6">
-                <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">Personal Support</h3>
-                <p className="text-gray-400 text-sm">Direct access to our team. No chatbots, no waiting in queue.</p>
-              </div>
-
-              <div className="glass rounded-2xl p-6">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">Proven Results</h3>
-                <p className="text-gray-400 text-sm">Join hundreds of businesses saving hours every week.</p>
-              </div>
+              {[
+                { title: "Affordable", desc: "A fraction of hiring an employee.", color: "blue", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { title: "Fast Setup", desc: "We build everything for you.", color: "orange", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+                { title: "Personal Support", desc: "Direct access. No chatbots.", color: "green", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+                { title: "Proven Results", desc: "Join businesses saving hours.", color: "purple", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+              ].map((item, i) => (
+                <ScrollReveal key={item.title} delay={i * 0.1}>
+                  <TiltCard>
+                    <div className="glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-300 group">
+                      <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                        <svg className={`w-6 h-6 text-${item.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
+                        </svg>
+                      </div>
+                      <h3 className={`text-lg font-semibold mb-2 text-white group-hover:text-${item.color}-400 transition-colors`}>{item.title}</h3>
+                      <p className="text-gray-400 text-sm">{item.desc}</p>
+                    </div>
+                  </TiltCard>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
@@ -335,29 +208,28 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="glass rounded-2xl p-6">
-                <p className="text-gray-300 mb-4">"We save 20+ hours every week thanks to Aigentic. The team set everything up and it just works."</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-500/30 flex items-center justify-center"><span className="text-white font-semibold">JD</span></div>
-                  <div><p className="text-white font-medium">John D.</p><p className="text-gray-500 text-sm">Founder, TechStartup</p></div>
-                </div>
-              </div>
-
-              <div className="glass rounded-2xl p-6">
-                <p className="text-gray-300 mb-4">"Finally, an automation solution that doesn't require a developer. They built exactly what we needed."</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-orange-500/30 flex items-center justify-center"><span className="text-white font-semibold">SM</span></div>
-                  <div><p className="text-white font-medium">Sarah M.</p><p className="text-gray-500 text-sm">Owner, LocalBiz</p></div>
-                </div>
-              </div>
-
-              <div className="glass rounded-2xl p-6">
-                <p className="text-gray-300 mb-4">"The personal support is incredible. They actually care about helping our business succeed."</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-500/30 flex items-center justify-center"><span className="text-white font-semibold">MK</span></div>
-                  <div><p className="text-white font-medium">Mike K.</p><p className="text-gray-500 text-sm">CEO, GrowthCo</p></div>
-                </div>
-              </div>
+              {[
+                { quote: "We save 20+ hours every week thanks to Aigentic.", name: "John D.", role: "Founder, TechStartup", color: "blue" },
+                { quote: "Finally, an automation solution that doesn't require a developer.", name: "Sarah M.", role: "Owner, LocalBiz", color: "orange" },
+                { quote: "The personal support is incredible. They actually care.", name: "Mike K.", role: "CEO, GrowthCo", color: "green" },
+              ].map((testimonial, i) => (
+                <ScrollReveal key={testimonial.name} delay={i * 0.15}>
+                  <TiltCard>
+                    <div className="glass rounded-2xl p-6 hover:bg-white/5 transition-all duration-300 group">
+                      <p className="text-gray-300 mb-4 group-hover:text-white transition-colors">"{testimonial.quote}"</p>
+                      <div className="flex items-center gap-3">
+                        <div className={`w-10 h-10 rounded-full bg-${testimonial.color}-500/30 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                          <span className="text-white font-semibold">{testimonial.name.split(" ").map(n => n[0]).join("")}</span>
+                        </div>
+                        <div>
+                          <p className="text-white font-medium">{testimonial.name}</p>
+                          <p className="text-gray-500 text-sm">{testimonial.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </TiltCard>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
@@ -369,37 +241,38 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4">Simple, <span className="gradient-text-accent">transparent</span> pricing</h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">One-time setup fee + monthly maintenance. No hidden costs.</p>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">One-time setup fee + monthly maintenance.</p>
             </div>
 
-            <div className="max-w-2xl mx-auto">
-              <div className="glass rounded-2xl p-8 border-2 border-blue-500/30">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">Custom Automation Package</h3>
-                  <p className="text-gray-400">Tailored to your specific business needs</p>
-                </div>
+            <ScrollReveal>
+              <div className="max-w-2xl mx-auto">
+                <TiltCard>
+                  <div className="glass rounded-2xl p-8 border-2 border-blue-500/30 hover:border-blue-500/60 transition-all duration-300 group">
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Custom Automation Package</h3>
+                      <p className="text-gray-400">Tailored to your specific business needs</p>
+                    </div>
 
-                <div className="grid grid-cols-2 gap-8 mb-8">
-                  <div className="text-center">
-                    <p className="text-gray-500 text-sm mb-1">One-time Setup</p>
-                    <p className="text-3xl font-bold text-white">$500-2,000</p>
-                    <p className="text-gray-500 text-xs mt-1">Depends on complexity</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-gray-500 text-sm mb-1">Monthly Fee</p>
-                    <p className="text-3xl font-bold text-white">$99-299</p>
-                    <p className="text-gray-500 text-xs mt-1">Unlimited automations</p>
-                  </div>
-                </div>
+                    <div className="grid grid-cols-2 gap-8 mb-8">
+                      <div className="text-center p-4 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors">
+                        <p className="text-gray-500 text-sm mb-1">One-time Setup</p>
+                        <p className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">$500-2,000</p>
+                      </div>
+                      <div className="text-center p-4 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors">
+                        <p className="text-gray-500 text-sm mb-1">Monthly Fee</p>
+                        <p className="text-3xl font-bold text-white group-hover:text-orange-400 transition-colors">$99-299</p>
+                      </div>
+                    </div>
 
-                <div className="text-center">
-                  <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] mb-4">
-                    Request a Quote
-                  </button>
-                  <p className="text-gray-500 text-sm">Free consultation to discuss your needs</p>
-                </div>
+                    <div className="text-center">
+                      <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105">
+                        Request a Quote
+                      </button>
+                    </div>
+                  </div>
+                </TiltCard>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
       </ScrollReveal>
@@ -413,47 +286,42 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <div className="glass rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">How long does setup take?</h3>
-                <p className="text-gray-400">Most automations are up and running within 1-2 weeks. Complex systems may take 3-4 weeks.</p>
-              </div>
-
-              <div className="glass rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">What tools can you integrate with?</h3>
-                <p className="text-gray-400">We support 100+ tools including Gmail, Slack, Notion, HubSpot, Salesforce, Google Sheets, and many more.</p>
-              </div>
-
-              <div className="glass rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">What if I need changes later?</h3>
-                <p className="text-gray-400">Just let us know! The monthly fee includes ongoing adjustments and new automations.</p>
-              </div>
-
-              <div className="glass rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">Is my data secure?</h3>
-                <p className="text-gray-400">Absolutely. We use enterprise-grade encryption and follow best practices for data security.</p>
-              </div>
-
-              <div className="glass rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">Can I cancel anytime?</h3>
-                <p className="text-gray-400">Yes, you can cancel your monthly plan at any time with no penalties or hidden fees.</p>
-              </div>
+              {[
+                { q: "How long does setup take?", a: "Most automations are up and running within 1-2 weeks." },
+                { q: "What tools can you integrate with?", a: "We support 100+ tools including Gmail, Slack, Notion, HubSpot, and more." },
+                { q: "What if I need changes later?", a: "Just let us know! The monthly fee includes ongoing adjustments." },
+                { q: "Is my data secure?", a: "Absolutely. We use enterprise-grade encryption." },
+                { q: "Can I cancel anytime?", a: "Yes, you can cancel with no penalties." },
+              ].map((faq, i) => (
+                <ScrollReveal key={faq.q} delay={i * 0.1}>
+                  <div className="glass rounded-xl p-6 hover:bg-white/5 transition-all duration-300 group cursor-pointer">
+                    <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center justify-between">
+                      {faq.q}
+                      <svg className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </h3>
+                    <p className="text-gray-400 mt-3">{faq.a}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
       </ScrollReveal>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <ScrollReveal>
         <section className="py-24 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="glass rounded-3xl p-12">
+            <div className="glass rounded-3xl p-12 hover:shadow-[0_0_60px_rgba(59,130,246,0.2)] transition-all duration-500 group">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to <span className="gradient-text-accent">save time</span>?</h2>
-              <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Join hundreds of businesses already benefiting from custom automations. Get your free consultation today.</p>
+              <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Join hundreds of businesses already benefiting from custom automations.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]">
+                <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105">
                   Get Free Consultation
                 </button>
-                <button className="px-8 py-4 glass text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all">
+                <button className="px-8 py-4 glass text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105">
                   See Examples
                 </button>
               </div>
