@@ -81,6 +81,25 @@ export default function Particles() {
       ctx.globalAlpha = 1;
     };
 
+    const drawMovingPoint = (point: MovingPoint) => {
+      // Outer ring
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 16, 0, Math.PI * 2);
+      ctx.strokeStyle = point.color;
+      ctx.globalAlpha = 0.4;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      
+      // Inner dot
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = point.color;
+      ctx.globalAlpha = 0.6;
+      ctx.fill();
+      
+      ctx.globalAlpha = 1;
+    };
+
     const drawConnections = () => {
       // Connect to mouse if active
       if (isMouseConnected) {
@@ -101,6 +120,9 @@ export default function Particles() {
           }
         });
       }
+      
+      // Draw moving points first
+      movingPoints.forEach(drawMovingPoint);
       
       // Connect to moving points
       movingPoints.forEach((point) => {
