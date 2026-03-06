@@ -293,11 +293,8 @@ export default function Home() {
               ].map((faq, i) => (
                 <ScrollReveal key={faq.q} delay={i * 0.1}>
                   <div className="glass rounded-xl p-6 hover:bg-white/5 transition-all duration-300 group cursor-pointer">
-                    <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center justify-between">
+                    <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
                       {faq.q}
-                      <svg className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
                     </h3>
                     <p className="text-gray-400 mt-3">{faq.a}</p>
                   </div>
