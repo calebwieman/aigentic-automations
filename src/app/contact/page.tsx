@@ -23,8 +23,29 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-12 px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 glass">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-8 w-auto" />
+            <span className="text-white font-semibold text-lg">Aigentic Automations</span>
+          </a>
+          
+          <div className="hidden md:flex items-center gap-6">
+            <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
+            <a href="/#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How it Works</a>
+            <a href="/#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
+            <a href="/#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+            <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
+              Get Started
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div className="pt-24 pb-12 px-6">
+        <div className="max-w-4xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -147,6 +168,7 @@ export default function Contact() {
             </div>
           </div>
         </ScrollReveal>
+      </div>
       </div>
     </div>
   );
