@@ -19,6 +19,7 @@ export default function Home() {
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How it Works</a>
             <a href="#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
+            <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
             <a href="#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
             <button className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
