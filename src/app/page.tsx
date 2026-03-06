@@ -173,7 +173,7 @@ export default function Home() {
               </TiltCard>
 
               {/* Card 4: 100+ Integrations */}
-              <TiltCard className="md:col-span-2">
+              <TiltCard>
                 <div className="glass rounded-2xl p-8 h-full">
                   <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
                     <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -189,25 +189,8 @@ export default function Home() {
                 </div>
               </TiltCard>
 
-              {/* Card 5: Smart Triggers */}
-              <TiltCard>
-                <div className="glass rounded-2xl p-8 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Smart Triggers
-                  </h3>
-                  <p className="text-gray-400">
-                    Automations that respond to events, schedules, or conditions you set.
-                  </p>
-                </div>
-              </TiltCard>
-
-              {/* Card 6: Real-time Analytics */}
-              <TiltCard className="md:col-span-3">
+              {/* Card 5: Real-time Analytics */}
+              <TiltCard className="md:col-span-2">
                 <div className="glass rounded-2xl p-8 h-full">
                   <div className="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
                     <svg className="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
