@@ -134,7 +134,7 @@ export default function Integrate() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 text-center"
           >
             How It <span className="text-blue-500">Works</span>
           </motion.h1>
@@ -171,7 +171,7 @@ export default function Integrate() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 text-center"
           >
             Ready to <span className="text-blue-500">start</span>?
           </motion.h2>
