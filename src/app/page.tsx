@@ -1,4 +1,5 @@
 "use client";
+import HeroTitle from "@/components/HeroTitle";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -56,7 +57,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-5xl md:text-7xl font-bold mb-6"
             >
-              <span className="gradient-text">Automations</span> that work<br />
+              <HeroTitle /> that work<br />
               while you <span className="gradient-text-accent">sleep</span>
             </motion.h1>
 
