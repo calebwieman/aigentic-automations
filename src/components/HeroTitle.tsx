@@ -30,11 +30,11 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
     return () => clearTimeout(startTimeout);
   }, [delay]);
 
-  // Generate more dust particles (10 per gear)
-  const dustParticles = Array.from({ length: 10 }, (_, i) => ({
+  // Generate more dust particles (15 per gear)
+  const dustParticles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
     x: Math.random() * 24 - 12,
-    y: Math.random() * 12,
+    y: Math.random() * 12 + 8, // Shifted down slightly
     size: 1.5 + Math.random() * 3,
     delay: Math.random() * 3,
     duration: 2.5 + Math.random() * 2.5,
