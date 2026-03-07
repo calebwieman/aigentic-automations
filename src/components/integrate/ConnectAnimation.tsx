@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, ReactElement } from "react";
+import { useEffect, useState, ReactElement, useCallback } from "react";
 
 interface ToolNode {
   id: string;
@@ -91,6 +91,7 @@ export default function ConnectAnimation() {
   const [visibleNodes, setVisibleNodes] = useState<Set<string>>(new Set());
   const [visibleConnections, setVisibleConnections] = useState<Set<string>>(new Set());
   const [pulseNode, setPulseNode] = useState<string | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -199,6 +200,7 @@ export default function ConnectAnimation() {
           {tools.map((tool) => {
             const isVisible = visibleNodes.has(tool.id);
             const isPulsing = pulseNode === tool.id;
+            const isHovered = hoveredNode === tool.id;
             
             return (
               <g
@@ -210,17 +212,19 @@ export default function ConnectAnimation() {
                   transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
                 }}
                 className={isPulsing ? "animate-pulse" : ""}
+                onMouseEnter={() => setHoveredNode(tool.id)}
+                onMouseLeave={() => setHoveredNode(null)}
               >
                 {/* Outer glow ring */}
                 <circle
                   r="8"
                   fill="transparent"
-                  stroke={isPulsing ? "#f97316" : "#3b82f6"}
+                  stroke={isPulsing || isHovered ? "#f97316" : "#3b82f6"}
                   strokeWidth="0.3"
                   style={{
-                    opacity: isVisible ? (isPulsing ? 0.8 : 0.4) : 0,
+                    opacity: isVisible ? (isPulsing || isHovered ? 0.8 : 0.4) : 0,
                     transition: "opacity 0.3s ease-out",
-                    filter: isPulsing ? "url(#glow)" : "none",
+                    filter: (isPulsing || isHovered) ? "url(#glow)" : "none",
                   }}
                 />
                 
@@ -228,7 +232,7 @@ export default function ConnectAnimation() {
                 <circle
                   r="5"
                   fill="url(#nodeBg)"
-                  stroke={isPulsing ? "#f97316" : "#3b82f6"}
+                  stroke={isPulsing || isHovered ? "#f97316" : "#3b82f6"}
                   strokeWidth="0.4"
                 />
                 
