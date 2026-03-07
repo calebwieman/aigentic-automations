@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 interface AnimatedIconProps {
   icon: string;
-  color?: "blue" | "orange";
+  color?: string;
   className?: string;
 }
 
@@ -133,7 +133,7 @@ export default function AnimatedIcon({ icon, color = "blue", className = "" }: A
   const animationType = getAnimationType(icon);
   const animation = iconAnimations[animationType] || iconAnimations.default;
   
-  const colorClass = color === "orange" ? "text-orange-400" : "text-blue-400";
+  const colorClass = color === "orange" || color === "orange" ? "text-orange-400" : "text-blue-400";
 
   return (
     <motion.svg
