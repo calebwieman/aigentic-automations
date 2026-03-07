@@ -30,14 +30,14 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
     return () => clearTimeout(startTimeout);
   }, [delay]);
 
-  // Generate 5 dust particles with random properties
-  const dustParticles = Array.from({ length: 5 }, (_, i) => ({
+  // Generate more dust particles (10 per gear)
+  const dustParticles = Array.from({ length: 10 }, (_, i) => ({
     id: i,
-    x: Math.random() * 20 - 10,
-    y: Math.random() * 10,
-    size: 2 + Math.random() * 3,
-    delay: Math.random() * 2,
-    duration: 3 + Math.random() * 2,
+    x: Math.random() * 24 - 12,
+    y: Math.random() * 12,
+    size: 1.5 + Math.random() * 3,
+    delay: Math.random() * 3,
+    duration: 2.5 + Math.random() * 2.5,
   }));
 
   return (
@@ -68,14 +68,14 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
           style={{
             width: particle.size,
             height: particle.size,
-            opacity: 0.3,
+            opacity: 0.4,
             left: `calc(50% + ${particle.x}px)`,
             top: particle.y,
           }}
           animate={{
-            y: [0, -20 - Math.random() * 10],
-            opacity: [0, 0.3, 0],
-            scale: [0.5, 1, 0],
+            y: [0, -18 - Math.random() * 12],
+            opacity: [0, 0.4, 0],
+            scale: [0.3, 1, 0],
           }}
           transition={{
             duration: particle.duration,
@@ -91,12 +91,12 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
 
 export default function HeroTitle() {
   return (
-    <h1 className="text-5xl md:text-7xl font-bold mb-6">
+    <span className="gradient-text">
       Autom
       <GearWithDust delay={0} />
       ti
       <GearWithDust delay={1} />
-      n
-    </h1>
+      ns
+    </span>
   );
 }
