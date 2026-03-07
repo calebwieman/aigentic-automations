@@ -129,9 +129,10 @@ export default function Integrate() {
   return (
     <div ref={containerRef} className="bg-black text-white" style={{ height: '700vh' }}>
       <svg
-        className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-40"
+        className="absolute top-0 left-0 w-full pointer-events-none z-40"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
+        style={{ height: '700vh', clipPath: 'inset(0 0 50% 0)' }}
       >
         <defs>
           <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
