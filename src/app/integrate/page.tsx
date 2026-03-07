@@ -128,41 +128,6 @@ export default function Integrate() {
 
   return (
     <div ref={containerRef} className="bg-black text-white" style={{ height: '700vh' }}>
-      <svg
-        className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-40"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        style={{ clipPath: 'inset(50% 0 0 0)' }}
-      >
-        <defs>
-          <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#f59e0b" />
-          </linearGradient>
-          <filter id="glow2">
-            <feGaussianBlur stdDeviation="0.2" result="coloredBlur"/>
-            <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-        
-        <motion.path
-          ref={pathRef}
-          d={path}
-          fill="none"
-          stroke="url(#lineGrad2)"
-          strokeWidth="0.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#glow2)"
-          strokeDasharray={pathLength}
-          style={{
-            strokeDashoffset,
-          }}
-        />
-      </svg>
 
       <section className="h-screen flex items-center justify-center relative z-10">
         <div className="text-center px-6 max-w-3xl">
