@@ -272,42 +272,7 @@ export default function ConnectAnimation() {
             );
           })}
         </g>
-        
-        {/* Central hub pulse */}
-        <circle
-          cx="50"
-          cy="50"
-          r="3"
-          fill="#3b82f6"
-          style={{
-            opacity: mounted ? 0.6 : 0,
-            transition: "opacity 1s ease-out 1s",
-            filter: "url(#glow)",
-          }}
-        />
-        <circle
-          cx="50"
-          cy="50"
-          r="3"
-          fill="transparent"
-          stroke="#3b82f6"
-          strokeWidth="0.2"
-          style={{
-            opacity: mounted ? 0.4 : 0,
-            animation: mounted ? "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite" : "none",
-          }}
-        />
       </svg>
-      
-      {/* CSS animation for ping effect */}
-      <style jsx>{`
-        @keyframes ping {
-          75%, 100% {
-            transform: scale(3);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 }
