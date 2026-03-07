@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Contact() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -32,6 +35,7 @@ export default function Contact() {
             <span className="text-white font-semibold text-lg">Aigentic Automations</span>
           </a>
           
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
             <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
@@ -39,7 +43,35 @@ export default function Contact() {
               Get Started
             </a>
           </div>
+
+          {/* Mobile Hamburger */}
+          <button 
+            className="block md:hidden p-2 text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="block md:hidden border-t border-white/10">
+            <div className="flex flex-col py-4 gap-4">
+              <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
+              <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
+              <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm mx-4 hover:bg-gray-200 transition-colors w-fit" onClick={() => setMobileMenuOpen(false)}>
+                Get Started
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       <div className="pt-24 pb-12 px-6">

@@ -11,6 +11,7 @@ import GradientBorderCard from "@/components/GradientBorderCard";
 
 export default function Home() {
   const [pageKey, setPageKey] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogoClick = () => {
     window.scrollTo(0, 0);
@@ -27,6 +28,7 @@ export default function Home() {
             <span className="text-white font-semibold text-lg">Aigentic Automations</span>
           </a>
           
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
@@ -34,7 +36,35 @@ export default function Home() {
               Get Started
             </a>
           </div>
+
+          {/* Mobile Hamburger */}
+          <button 
+            className="block md:hidden p-2 text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="block md:hidden border-t border-white/10">
+            <div className="flex flex-col py-4 gap-4">
+              <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
+              <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
+              <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm mx-4 hover:bg-gray-200 transition-colors w-fit" onClick={() => setMobileMenuOpen(false)}>
+                Get Started
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -55,7 +85,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold mb-6"
+              className="text-4xl md:text-7xl font-bold mb-6"
             >
               <HeroTitle /> that work<br />
               while you <span className="gradient-text-accent">sleep</span>
@@ -75,12 +105,12 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
             >
-              <a href="/integrate" className="px-8 py-4 bg-transparent border border-gray-500/50 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-gray-400 transition-all hover:scale-105">
+              <a href="/integrate" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-gray-500/50 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-gray-400 transition-all hover:scale-105 text-center">
                 How It Works
               </a>
-              <a href="/demo" className="px-8 py-4 bg-transparent border border-gray-500/50 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-gray-400 transition-all hover:scale-105">
+              <a href="/demo" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-gray-500/50 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-gray-400 transition-all hover:scale-105 text-center">
                 Watch Demo
               </a>
             </motion.div>
@@ -92,7 +122,7 @@ export default function Home() {
       <ScrollReveal>
         <section className="py-16 px-6 border-t border-white/5">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">
                   <span className="text-orange-400"><DecoderText text="2,847" /></span>
@@ -142,7 +172,7 @@ export default function Home() {
               ].map((feature, i) => (
                 <ScrollReveal key={feature.title} delay={i * 0.1}>
                   <TiltCard>
-                    <div className="rounded-2xl p-8 h-56 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
+                    <div className="rounded-2xl p-8 min-h-56 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
                       {/* Icon container with glow */}
                       <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/10 border border-${feature.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300`}>
                         <AnimatedIcon icon={feature.icon} color={feature.color} />
@@ -306,10 +336,10 @@ export default function Home() {
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to <span className="gradient-text-accent">save time</span>?</h2>
                 <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Join hundreds of businesses already benefiting from custom automations.</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <a href="/contact" className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105">
+                  <a href="/contact" className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105 text-center">
                     Get Free Consultation
                   </a>
-                  <a href="/integrate" className="px-8 py-4 glass-solid text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105">
+                  <a href="/integrate" className="w-full sm:w-auto px-8 py-4 glass-solid text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105 text-center">
                     How It Works
                   </a>
                 </div>
