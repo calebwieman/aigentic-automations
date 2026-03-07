@@ -262,7 +262,6 @@ function StepCard({ step, index, isLeft }: {
               {step.interactive} →
             </motion.button>
           </div>
-        </TiltCard>
       </motion.div>
     </section>
   );
