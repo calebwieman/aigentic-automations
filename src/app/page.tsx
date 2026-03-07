@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import DecoderText from "@/components/DecoderText";
+import AnimatedIcon from "@/components/AnimatedIcon";
 
 export default function Home() {
   return (
@@ -150,9 +151,7 @@ export default function Home() {
                     <div className="rounded-2xl p-8 h-56 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
                       {/* Icon container with glow */}
                       <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/10 border border-${feature.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300`}>
-                        <svg className={`w-6 h-6 text-${feature.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={feature.icon} />
-                        </svg>
+                        <AnimatedIcon icon={feature.icon} color={feature.color} />
                       </div>
                       <h3 className={`text-xl font-semibold mb-2 text-white group-hover:text-${feature.color}-400 transition-colors`}>{feature.title}</h3>
                       <p className="text-gray-400">{feature.desc}</p>
@@ -215,9 +214,7 @@ export default function Home() {
                   <TiltCard>
                     <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)" }}>
                       <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/10 border border-${item.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}>
-                        <svg className={`w-6 h-6 text-${item.color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                        </svg>
+                        <AnimatedIcon icon={item.icon} color={item.color} />
                       </div>
                       <h3 className={`text-lg font-semibold mb-2 text-white group-hover:text-${item.color}-400 transition-colors`}>{item.title}</h3>
                       <p className="text-gray-400 text-sm">{item.desc}</p>
