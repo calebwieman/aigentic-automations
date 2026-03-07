@@ -8,8 +8,8 @@ import ConnectAnimation from "@/components/integrate/ConnectAnimation";
 const steps = [
   {
     id: 1,
-    title: "Connect Your Tools",
-    description: "Link the software you use every day — WooCommerce, Slack, Gmail, QuickBooks, and 100+ more.",
+    title: "Give Us Access",
+    description: "Just give us read/write access to the tools you already use. We handle all the technical setup.",
     icon: "connect",
     interactive: "See supported apps",
     logos: ["slack", "gmail", "notion", "hubspot", "shopify", "zapier"],
@@ -17,28 +17,28 @@ const steps = [
   {
     id: 2,
     title: "Tell Us What You Need",
-    description: "Share your business processes and pain points. We'll help you identify what can be automated.",
+    description: "Share what tasks eat up your time. We'll identify what can be automated.",
     icon: "message",
     interactive: "Example workflows",
   },
   {
     id: 3,
     title: "We Design It",
-    description: "Our team maps out every step of your custom automation workflow.",
+    description: "We map out every step of your custom automation workflow. You approve before we build anything.",
     icon: "design",
     interactive: "View sample designs",
   },
   {
     id: 4,
     title: "We Build It",
-    description: "Your automation is built, tested, and refined until it works perfectly.",
+    description: "Our team builds, tests, and refines your automation until it works perfectly.",
     icon: "build",
     interactive: "See our process",
   },
   {
     id: 5,
     title: "Watch It Run",
-    description: "Your automation starts working immediately. Save hours every week.",
+    description: "Your automation starts working immediately. You save hours every week without lifting a finger.",
     icon: "rocket",
     interactive: "Case studies",
   },
@@ -156,7 +156,7 @@ export default function Integrate() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-400 max-w-2xl mx-auto"
           >
-            Scroll down to see how we transform your business
+            We do all the work. You just tell us what you need.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -193,7 +193,7 @@ export default function Integrate() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-400 mb-8"
           >
-            Let&apos;s build your custom automation
+            We&apos;ll build it for you. No coding required.
           </motion.p>
           <a 
             href="/contact"
