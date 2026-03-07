@@ -125,14 +125,19 @@ export default function Integrate() {
   }, [path]);
 
   const strokeDashoffset = useTransform(scrollYProgress, [0, 1], [pathLength, 0]);
+  
+  // Translate path up as scroll increases to scroll old parts out
+  // At scroll 0: translate 0 (tip at top of viewport)
+  // At scroll 0.5: translate -50 (tip at center of viewport)  
+  // At scroll 1: translate -100 (tip would be off bottom, but path ends)
+  const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -50]);
 
   return (
     <div ref={containerRef} className="bg-black text-white" style={{ height: '700vh' }}>
       <svg
-        className="absolute top-0 left-0 w-full pointer-events-none z-40"
+        className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-40"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        style={{ height: '700vh', clipPath: 'inset(0 0 50% 0)' }}
       >
         <defs>
           <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -160,6 +165,7 @@ export default function Integrate() {
           strokeDasharray={pathLength}
           style={{
             strokeDashoffset,
+            translateY,
           }}
         />
       </svg>
