@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -7,12 +8,19 @@ import DecoderText from "@/components/DecoderText";
 import AnimatedIcon from "@/components/AnimatedIcon";
 
 export default function Home() {
+  const [pageKey, setPageKey] = useState(0);
+
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setPageKey(prev => prev + 1);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div key={pageKey} className="flex flex-col min-h-screen">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass">
         <div className="w-full px-6 py-4 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" onClick={(e) => { e.preventDefault(); window.location.reload(); }}>
+          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" onClick={(e) => { e.preventDefault(); handleLogoClick(); }}>
             <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-8 w-auto" />
             <span className="text-white font-semibold text-lg">Aigentic Automations</span>
           </a>
