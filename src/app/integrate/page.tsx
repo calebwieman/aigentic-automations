@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState, ReactElement } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 
 const steps = [
