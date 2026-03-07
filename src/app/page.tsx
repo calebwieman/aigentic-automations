@@ -7,7 +7,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import DecoderText from "@/components/DecoderText";
 import AnimatedIcon from "@/components/AnimatedIcon";
 import GradientBorderCard from "@/components/GradientBorderCard";
-import FlipCard from "@/components/FlipCard";
 
 export default function Home() {
   const [pageKey, setPageKey] = useState(0);
@@ -250,19 +249,15 @@ export default function Home() {
                 { quote: "The personal support is incredible. They actually care.", name: "Mike K.", role: "CEO, GrowthCo", color: "blue" },
               ].map((testimonial, i) => (
                 <ScrollReveal key={testimonial.name} delay={i * 0.15}>
-                  <FlipCard
-                    backContent={
-                      <div className="text-center">
-                        <div className={`text-4xl mb-4 text-${testimonial.color}-400`}>⭐⭐⭐⭐⭐</div>
-                        <p className="text-white font-semibold">{testimonial.name}</p>
-                        <p className="text-gray-400 text-sm">{testimonial.role}</p>
-                      </div>
-                    }
-                  >
+                  <TiltCard>
                     <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden">
                       {/* Quote mark decoration */}
                       <div className={`absolute top-2 right-4 text-${testimonial.color}-500/20 text-6xl font-serif leading-none opacity-30 group-hover:opacity-50 transition-opacity`}>"</div>
-                      <p className="text-gray-300 mb-4 group-hover:text-white transition-colors relative z-10">"{testimonial.quote}"</p>
+                      {/* Stars on hover */}
+                      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                        <div className={`text-${testimonial.color}-400`}>⭐⭐⭐⭐⭐</div>
+                      </div>
+                      <p className={`text-gray-300 mb-4 group-hover:text-white transition-colors relative z-10 ${i === 1 ? '' : ''}`} style={{ opacity: i === 1 ? 1 : undefined }}>"{testimonial.quote}"</p>
                       <div className="flex items-center gap-3">
                         <div className={`w-10 h-10 rounded-full bg-${testimonial.color}-500/10 border border-${testimonial.color}-500/30 flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
                           <span className="text-white font-semibold text-sm">{testimonial.name.split(" ").map(n => n[0]).join("")}</span>
@@ -273,7 +268,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </FlipCard>
+                  </TiltCard>
                 </ScrollReveal>
               ))}
             </div>
