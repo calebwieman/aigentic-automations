@@ -6,6 +6,8 @@ import TiltCard from "@/components/TiltCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import DecoderText from "@/components/DecoderText";
 import AnimatedIcon from "@/components/AnimatedIcon";
+import GradientBorderCard from "@/components/GradientBorderCard";
+import FlipCard from "@/components/FlipCard";
 
 export default function Home() {
   const [pageKey, setPageKey] = useState(0);
@@ -219,15 +221,13 @@ export default function Home() {
                 { title: "Proven Results", desc: "Join businesses saving hours.", color: "orange", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
               ].map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 0.1}>
-                  <TiltCard>
-                    <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)" }}>
-                      <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/10 border border-${item.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}>
-                        <AnimatedIcon icon={item.icon} color={item.color} />
-                      </div>
-                      <h3 className={`text-lg font-semibold mb-2 text-white group-hover:text-${item.color}-400 transition-colors`}>{item.title}</h3>
-                      <p className="text-gray-400 text-sm">{item.desc}</p>
+                  <GradientBorderCard color={item.color}>
+                    <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/10 border border-${item.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300`}>
+                      <AnimatedIcon icon={item.icon} color={item.color} />
                     </div>
-                  </TiltCard>
+                    <h3 className={`text-lg font-semibold mb-2 text-white group-hover:text-${item.color}-400 transition-colors`}>{item.title}</h3>
+                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                  </GradientBorderCard>
                 </ScrollReveal>
               ))}
             </div>
@@ -250,13 +250,21 @@ export default function Home() {
                 { quote: "The personal support is incredible. They actually care.", name: "Mike K.", role: "CEO, GrowthCo", color: "blue" },
               ].map((testimonial, i) => (
                 <ScrollReveal key={testimonial.name} delay={i * 0.15}>
-                  <TiltCard>
-                    <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)" }}>
+                  <FlipCard
+                    backContent={
+                      <div className="text-center">
+                        <div className={`text-4xl mb-4 text-${testimonial.color}-400`}>⭐⭐⭐⭐⭐</div>
+                        <p className="text-white font-semibold">{testimonial.name}</p>
+                        <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                      </div>
+                    }
+                  >
+                    <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden">
                       {/* Quote mark decoration */}
                       <div className={`absolute top-2 right-4 text-${testimonial.color}-500/20 text-6xl font-serif leading-none opacity-30 group-hover:opacity-50 transition-opacity`}>"</div>
                       <p className="text-gray-300 mb-4 group-hover:text-white transition-colors relative z-10">"{testimonial.quote}"</p>
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full bg-${testimonial.color}-500/10 border border-${testimonial.color}-500/30 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}>
+                        <div className={`w-10 h-10 rounded-full bg-${testimonial.color}-500/10 border border-${testimonial.color}-500/30 flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
                           <span className="text-white font-semibold text-sm">{testimonial.name.split(" ").map(n => n[0]).join("")}</span>
                         </div>
                         <div>
@@ -265,7 +273,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </TiltCard>
+                  </FlipCard>
                 </ScrollReveal>
               ))}
             </div>
@@ -293,7 +301,7 @@ export default function Home() {
                   <div className="z-30 rounded-xl p-6 transition-all duration-300 group cursor-pointer relative overflow-hidden border border-transparent hover:border-white/10" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/0 group-hover:bg-blue-500/50 transition-all duration-300 rounded-l-xl" />
                     <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-xs text-gray-400 group-hover:text-blue-400 group-hover:bg-blue-500/20 transition-all">{i + 1}</span>
+                      <AnimatedIcon icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" color={i % 2 === 0 ? "blue" : "orange"} className="w-6 h-6" />
                       {faq.q}
                     </h3>
                     <p className="text-gray-400 mt-3 pl-9">{faq.a}</p>
