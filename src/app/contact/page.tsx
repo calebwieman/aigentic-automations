@@ -34,10 +34,6 @@ export default function Contact() {
           
           <div className="hidden md:flex items-center gap-6">
             <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
-            <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
-            <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
-              Get Started
-            </a>
           </div>
         </div>
       </nav>

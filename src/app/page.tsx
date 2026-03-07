@@ -29,10 +29,6 @@ export default function Home() {
           
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
-            <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
-            <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
-              Get Started
-            </a>
           </div>
         </div>
       </nav>
@@ -322,12 +318,12 @@ export default function Home() {
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to <span className="gradient-text-accent">save time</span>?</h2>
                 <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Join hundreds of businesses already benefiting from custom automations.</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <button className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105">
+                  <a href="/contact" className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105">
                     Get Free Consultation
-                  </button>
-                  <button className="px-8 py-4 glass-solid text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105">
-                    See Examples
-                  </button>
+                  </a>
+                  <a href="/integrate" className="px-8 py-4 glass-solid text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105">
+                    How It Works
+                  </a>
                 </div>
               </div>
             </div>
