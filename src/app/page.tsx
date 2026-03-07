@@ -29,6 +29,7 @@ export default function Home() {
           
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
+            <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
             <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
             </a>
@@ -66,7 +67,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto"
             >
-              Build powerful automations that save time and create value. 
+              Leverage AI agents that save time and create value. 
               Your digital workforce never stops, so you can focus on what matters.
             </motion.p>
 
@@ -77,7 +78,7 @@ export default function Home() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <a href="/integrate" className="px-8 py-4 bg-transparent border border-gray-500/50 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-gray-400 transition-all hover:scale-105">
-                Integrate Now
+                How It Works
               </a>
               <a href="/demo" className="px-8 py-4 bg-transparent border border-gray-500/50 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-gray-400 transition-all hover:scale-105">
                 Watch Demo
@@ -121,22 +122,6 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
-      {/* Logo Bar */}
-      <ScrollReveal>
-        <section className="py-12 px-6 border-t border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-center text-gray-500 text-sm mb-8">Trusted by forward-thinking businesses</p>
-            <div className="flex flex-wrap items-center justify-center gap-12 opacity-50">
-              <div className="text-gray-400 font-semibold text-xl">ACME Inc</div>
-              <div className="text-gray-400 font-semibold text-xl">TechCorp</div>
-              <div className="text-gray-400 font-semibold text-xl">StartupXYZ</div>
-              <div className="text-gray-400 font-semibold text-xl">Plasma Bionics</div>
-              <div className="text-gray-400 font-semibold text-xl">FoundersCo</div>
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
       {/* Features */}
       <ScrollReveal>
         <section id="features" className="py-24 px-6">
@@ -148,7 +133,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { title: "Visual Workflow Builder", desc: "Build complex automations with our drag-and-drop visual builder.", color: "blue", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+                { title: "We Build Everything", desc: "Tell us what you need and we build it. No coding required.", color: "blue", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
                 { title: "24/7 Running", desc: "Your automations work around the clock.", color: "orange", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
                 { title: "Enterprise Security", desc: "Bank-level encryption keeps your data safe.", color: "blue", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
                 { title: "100+ Integrations", desc: "Connect with Slack, Gmail, Notion, and more.", color: "orange", icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" },
