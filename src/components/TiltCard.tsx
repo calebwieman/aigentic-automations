@@ -72,13 +72,11 @@ export default function TiltCard({
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
+        background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)",
       }}
       whileHover={{ scale: scaleOnHover }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={`relative group rounded-2xl ${className}`}
-      style={{
-        background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)",
-      }}
     >
       {/* Inner card highlight - lighter around cursor */}
       {glowPos.x > 0 && (
