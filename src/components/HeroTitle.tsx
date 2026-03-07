@@ -27,7 +27,7 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
             width: particle.size,
             height: particle.size,
             left: `calc(50% + ${particle.x}px)`,
-            top: 8,
+            top: 28,
             zIndex: 10,
           }}
           animate={{
