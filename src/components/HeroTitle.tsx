@@ -54,15 +54,17 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
         animate={{
           rotate: [
             0,
-            30,    // 0-1s: ramp up start
-            90,    // 1-2s: ramp up
-            450,   // 2-4s: fast spin (360 + 90)
-            510,   // 4-5s: ramp down
-            510,   // 5-7s: rest
-            540,   // 7-8s: ramp up
-            900,   // 8-10s: fast spin
-            960,   // 10-11s: ramp down
-            960,   // 11-13s: rest
+            30,
+            90,
+            450,
+            510,
+            540,
+            900,
+            960,
+            990,
+            1350,
+            1410,
+            1440,
           ],
         }}
         transition={{
@@ -70,7 +72,7 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
           repeat: Infinity,
           delay: delay,
           ease: "linear",
-          times: [0, 0.08, 0.15, 0.31, 0.38, 0.54, 0.62, 0.77, 0.85, 1],
+          times: [0, 0.08, 0.15, 0.31, 0.38, 0.42, 0.62, 0.69, 0.72, 0.92, 0.96, 1],
         }}
       >
         <path
