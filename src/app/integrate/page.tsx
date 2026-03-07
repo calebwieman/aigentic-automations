@@ -246,7 +246,7 @@ function StepCard({ step, index, isLeft }: {
               transition={{ delay: 0.2, type: "spring" }}
               className="flex items-center gap-4 mb-4"
             >
-              <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/40 flex items-center justify-center">
                 {step.icon === 'connect' && (
                   <svg className="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -299,7 +299,7 @@ function StepCard({ step, index, isLeft }: {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/20 transition-all"
+              className="px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/40 transition-all"
             >
               {step.interactive} →
             </motion.button>
@@ -318,16 +318,16 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
   
   const animations = {
     1: ( // Connect - pulsing dots
-      <div className="relative w-96 h-96">
+      <div className="relative w-[500px] h-[500px]">
         <motion.div 
-          className="absolute w-12 h-12 rounded-full bg-blue-500/30"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+          className="absolute w-12 h-12 rounded-full bg-blue-500/60"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.9, 0.5] }}
           transition={{ duration: 2, repeat: Infinity }}
           style={{ left: '10%', top: '30%' }}
         />
         <motion.div 
-          className="absolute w-8 h-8 rounded-full bg-orange-500/40"
-          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          className="absolute w-8 h-8 rounded-full bg-orange-500/60"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0.9, 0.6] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
           style={{ right: '10%', bottom: '30%' }}
         />
@@ -340,31 +340,31 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     2: ( // Tell Us - floating bubbles
-      <div className="relative w-96 h-96">
+      <div className="relative w-[500px] h-[500px]">
         <motion.div 
-          className="absolute px-4 py-2 rounded-2xl bg-blue-500/20 border border-blue-500/40"
+          className="absolute px-4 py-2 rounded-2xl bg-blue-500/40 border border-blue-500/60"
           animate={{ y: [0, -10, 0], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 2, repeat: Infinity }}
           style={{ left: '10%', top: '20%' }}
         />
         <motion.div 
-          className="absolute px-4 py-2 rounded-2xl bg-orange-500/20 border border-orange-500/40"
-          animate={{ y: [0, -8, 0], opacity: [0.4, 0.7, 0.4] }}
+          className="absolute px-4 py-2 rounded-2xl bg-orange-500/40 border border-orange-500/60"
+          animate={{ y: [0, -8, 0], opacity: [0.6, 0.9, 0.6] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
           style={{ right: '10%', bottom: '25%' }}
         />
       </div>
     ),
     3: ( // Design - grid pulse
-      <div className="relative w-96 h-96">
+      <div className="relative w-[500px] h-[500px]">
         <motion.div 
-          className="absolute inset-0 border border-blue-500/20 rounded-lg"
-          animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
+          className="absolute inset-0 border border-blue-500/50 rounded-lg"
+          animate={{ scale: [1, 1.05, 1], opacity: [0.4, 0.7, 0.4] }}
           transition={{ duration: 3, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute inset-4 border border-orange-500/30 rounded"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+          className="absolute inset-4 border border-orange-500/50 rounded"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
         />
         <motion.div 
@@ -376,32 +376,32 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     4: ( // Build - spinning rings
-      <div className="relative w-96 h-96">
+      <div className="relative w-[500px] h-[500px]">
         <motion.div 
-          className="absolute inset-0 border-2 border-blue-500/20 rounded-full"
+          className="absolute inset-0 border-2 border-blue-500/50 rounded-full"
           animate={{ rotate: 360 }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         />
         <motion.div 
-          className="absolute inset-2 border border-orange-500/30 rounded-full"
+          className="absolute inset-2 border border-orange-500/50 rounded-full"
           animate={{ rotate: -360 }}
           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
         />
         <motion.div 
-          className="absolute inset-6 border border-blue-500/40 rounded-full"
+          className="absolute inset-6 border border-blue-500/60 rounded-full"
           animate={{ rotate: 360 }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
         />
       </div>
     ),
     5: ( // Watch It Run - play pulse
-      <div className="relative w-96 h-96">
+      <div className="relative w-[500px] h-[500px]">
         <motion.div 
           className="absolute inset-0 flex items-center justify-center"
         >
           <motion.div 
-            className="w-16 h-16 rounded-full bg-blue-500/20"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+            className="w-16 h-16 rounded-full bg-blue-500/40"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0.9, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
         </motion.div>
