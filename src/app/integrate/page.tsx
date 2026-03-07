@@ -3,6 +3,7 @@
 import { useRef, useMemo, useEffect, useState, ReactElement } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
+import ConnectAnimation from "@/components/integrate/ConnectAnimation";
 
 const steps = [
   {
@@ -317,26 +318,9 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
   const position = isLeft ? "right-[15%]" : "left-[15%]";
   
   const animations = {
-    1: ( // Connect - pulsing dots
-      <div className="relative w-[500px] h-[500px]">
-        <motion.div 
-          className="absolute w-12 h-12 rounded-full bg-blue-500/60"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.9, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ left: '10%', top: '30%' }}
-        />
-        <motion.div 
-          className="absolute w-8 h-8 rounded-full bg-orange-500/60"
-          animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0.9, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-          style={{ right: '10%', bottom: '30%' }}
-        />
-        <motion.div 
-          className="absolute w-1 h-1 bg-white rounded-full"
-          animate={{ x: [0, 20, 0], opacity: [0, 1, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          style={{ left: '35%', top: '45%' }}
-        />
+    1: ( // Connect - network constellation
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
+        <ConnectAnimation />
       </div>
     ),
     2: ( // Tell Us - floating bubbles
