@@ -92,10 +92,11 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
 export default function HeroTitle() {
   return (
     <span className="gradient-text">
-      Autom
+      Aut
       <GearWithDust delay={0} />
-      ti
+      m
       <GearWithDust delay={1} />
+      ti
       ns
     </span>
   );
