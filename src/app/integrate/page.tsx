@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, ReactElement } from "react";
+import { useRef, useMemo, useEffect, useState, ReactElement } from "react";
 import { motion } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 
