@@ -263,12 +263,12 @@ function StepCard({ step, index, isLeft }: {
               <span className="text-2xl font-bold text-blue-500">{String(step.id).padStart(2, '0')}</span>
             </motion.div>
             
-            <h2 className="text-3xl font-bold mb-4 group-hover:text-blue-400 transition-colors">{step.title}</h2>
-            <p className="text-gray-400 text-lg mb-6">{step.description}</p>
+            <h2 className="text-3xl font-bold mb-4 text-center group-hover:text-blue-400 transition-colors">{step.title}</h2>
+            <p className="text-gray-400 text-lg mb-6 text-center">{step.description}</p>
             
             {/* App logos for first step */}
             {step.logos && (
-              <div className="flex flex-wrap gap-2 mb-6 justify-end">
+              <div className="flex flex-wrap gap-2 mb-6 justify-center">
                 {step.logos.map((logo) => (
                   <div
                     key={logo}
@@ -281,6 +281,7 @@ function StepCard({ step, index, isLeft }: {
               </div>
             )}
             
+            <div className="flex justify-center">
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -288,6 +289,7 @@ function StepCard({ step, index, isLeft }: {
             >
               {step.interactive} →
             </motion.button>
+            </div>
           </div>
         </motion.div>
       </motion.div>
