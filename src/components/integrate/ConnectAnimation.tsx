@@ -103,7 +103,7 @@ export default function ConnectAnimation() {
         
         // Pulse the newly visible node
         setPulseNode(tools[i].id);
-        setTimeout(() => setPulseNode(null), 400);
+        setTimeout(() => setPulseNode(null), 800);
       }
     };
     
@@ -125,9 +125,9 @@ export default function ConnectAnimation() {
       if (visibleNodes.size === tools.length) {
         const randomNode = tools[Math.floor(Math.random() * tools.length)].id;
         setPulseNode(randomNode);
-        setTimeout(() => setPulseNode(null), 600);
+        setTimeout(() => setPulseNode(null), 1200);
       }
-    }, 2000);
+    }, 4000);
     
     return () => clearInterval(pulseInterval);
   }, []);
