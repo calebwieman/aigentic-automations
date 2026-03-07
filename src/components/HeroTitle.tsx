@@ -51,8 +51,27 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
         viewBox="0 0 24 24"
         className="w-[0.7em] h-[0.7em] inline-block"
         style={{ color: "white", display: "inline-block" }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 8, repeat: Infinity, delay: delay + 1, ease: "linear" }}
+        animate={{
+          rotate: [
+            0,
+            30,    // 0-1s: ramp up start
+            90,    // 1-2s: ramp up
+            450,   // 2-4s: fast spin (360 + 90)
+            510,   // 4-5s: ramp down
+            510,   // 5-7s: rest
+            540,   // 7-8s: ramp up
+            900,   // 8-10s: fast spin
+            960,   // 10-11s: ramp down
+            960,   // 11-13s: rest
+          ],
+        }}
+        transition={{
+          duration: 13,
+          repeat: Infinity,
+          delay: delay,
+          ease: "linear",
+          times: [0, 0.08, 0.15, 0.31, 0.38, 0.54, 0.62, 0.77, 0.85, 1],
+        }}
       >
         <path
           fill="currentColor"
