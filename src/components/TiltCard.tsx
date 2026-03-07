@@ -93,16 +93,18 @@ export default function TiltCard({
         <>
           {/* Outer hazy glow */}
           <div 
-            className="absolute -inset-3 rounded-2xl pointer-events-none transition-all duration-150"
+            className="absolute rounded-2xl pointer-events-none transition-all duration-150"
             style={{
+              inset: -16,
               background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, hsl(${hue}, 100%, 50%, 0.4) 0%, hsl(${hue}, 100%, 40%, 0.15) 40%, transparent 70%)`,
               filter: 'blur(20px)',
             }}
           />
           {/* Inner brighter glow */}
           <div 
-            className="absolute -inset-1 rounded-2xl pointer-events-none transition-all duration-150"
+            className="absolute rounded-2xl pointer-events-none transition-all duration-150"
             style={{
+              inset: -8,
               background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, hsl(${hue}, 100%, 55%, 0.5) 0%, hsl(${hue}, 100%, 45%, 0.2) 35%, transparent 60%)`,
               filter: 'blur(12px)',
             }}

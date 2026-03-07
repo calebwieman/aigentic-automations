@@ -252,14 +252,14 @@ export default function Home() {
                   <TiltCard>
                     <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden">
                       {/* Quote mark decoration */}
-                      <div className={`absolute top-2 right-4 text-${testimonial.color}-500/20 text-6xl font-serif leading-none opacity-30 group-hover:opacity-50 transition-opacity`}>"</div>
-                      {/* Stars on hover */}
-                      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
-                        <div className={`text-${testimonial.color}-400`}>⭐⭐⭐⭐⭐</div>
+                      <div className="absolute top-2 right-4 text-white/10 text-6xl font-serif leading-none opacity-30 group-hover:opacity-50 transition-opacity">"</div>
+                      {/* Stars on hover - smaller, bottom right */}
+                      <div className="absolute bottom-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        ⭐⭐⭐⭐⭐
                       </div>
-                      <p className={`text-gray-300 mb-4 group-hover:text-white transition-colors relative z-10 ${i === 1 ? '' : ''}`} style={{ opacity: i === 1 ? 1 : undefined }}>"{testimonial.quote}"</p>
+                      <p className="text-gray-300 mb-4 group-hover:text-white transition-colors relative z-10">"{testimonial.quote}"</p>
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full bg-${testimonial.color}-500/10 border border-${testimonial.color}-500/30 flex items-center justify-center group-hover:scale-110 transition-all duration-300`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${i === 1 ? 'bg-orange-500/10 border border-orange-500/30' : 'bg-blue-500/10 border border-blue-500/30'}`}>
                           <span className="text-white font-semibold text-sm">{testimonial.name.split(" ").map(n => n[0]).join("")}</span>
                         </div>
                         <div>
