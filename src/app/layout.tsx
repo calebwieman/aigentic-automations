@@ -23,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+      </head>
       <body className={`${inter.variable} antialiased`}>
         {/* Mesh gradient background */}
         <div className="mesh-gradient" aria-hidden="true" />

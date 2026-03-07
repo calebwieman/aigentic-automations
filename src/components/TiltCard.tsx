@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface TiltCardProps {
@@ -17,6 +17,7 @@ export default function TiltCard({
   scaleOnHover = 1.02,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -31,14 +32,13 @@ export default function TiltCard({
     if (!ref.current) return;
     
     const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
+    setGlowPos({ x: mouseX, y: mouseY });
+    
+    const xPct = mouseX / rect.width - 0.5;
+    const yPct = mouseY / rect.height - 0.5;
     
     x.set(xPct);
     y.set(yPct);
@@ -47,7 +47,21 @@ export default function TiltCard({
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
+    setGlowPos({ x: 0, y: 0 });
   };
+
+  // Snap to blue or orange at the middle
+  const getColor = () => {
+    if (glowPos.x === 0) return 220; // Default blue
+    const pct = glowPos.x / (ref.current?.offsetWidth || 300);
+    if (pct < 0.5) {
+      return 220; // Blue on left
+    } else {
+      return 30; // Orange on right
+    }
+  };
+
+  const hue = getColor();
 
   return (
     <motion.div
@@ -61,14 +75,51 @@ export default function TiltCard({
       }}
       whileHover={{ scale: scaleOnHover }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`relative group ${className}`}
+      className={`relative group rounded-2xl ${className}`}
+      style={{
+        background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)",
+      }}
     >
-      {/* Glow effect on hover */}
-      <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-orange-500/20 blur-lg" />
-      
-      {/* Inner glow closer to card */}
-      <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none bg-gradient-to-r from-blue-500/10 to-orange-500/10" />
-      
+      {/* Inner card highlight - lighter around cursor */}
+      {glowPos.x > 0 && (
+        <div 
+          className="absolute inset-0 rounded-2xl pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, rgba(255,255,255,0.15) 0%, transparent 60%)`,
+          }}
+        />
+      )}
+
+      {/* Glow layers - only render when hovering */}
+      {glowPos.x > 0 && (
+        <>
+          {/* Outer hazy glow */}
+          <div 
+            className="absolute -inset-3 rounded-2xl pointer-events-none transition-all duration-150"
+            style={{
+              background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, hsl(${hue}, 100%, 50%, 0.4) 0%, hsl(${hue}, 100%, 40%, 0.15) 40%, transparent 70%)`,
+              filter: 'blur(20px)',
+            }}
+          />
+          {/* Inner brighter glow */}
+          <div 
+            className="absolute -inset-1 rounded-2xl pointer-events-none transition-all duration-150"
+            style={{
+              background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, hsl(${hue}, 100%, 55%, 0.5) 0%, hsl(${hue}, 100%, 45%, 0.2) 35%, transparent 60%)`,
+              filter: 'blur(12px)',
+            }}
+          />
+          {/* Bright core */}
+          <div 
+            className="absolute inset-0 rounded-2xl pointer-events-none transition-all duration-150"
+            style={{
+              background: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, hsl(${hue}, 80%, 60%, 0.15) 0%, transparent 50%)`,
+              filter: 'blur(6px)',
+            }}
+          />
+        </>
+      )}
+
       <div className="relative">
         {children}
       </div>

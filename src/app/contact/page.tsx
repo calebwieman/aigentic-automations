@@ -34,9 +34,7 @@ export default function Contact() {
           
           <div className="hidden md:flex items-center gap-6">
             <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
-            <a href="/#how-it-works" className="text-gray-400 hover:text-white transition-colors text-sm">How it Works</a>
-            <a href="/#pricing" className="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a>
-            <a href="/#faq" className="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a>
+            <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</a>
             <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
             </a>
@@ -61,7 +59,7 @@ export default function Contact() {
         <ScrollReveal delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Info */}
-            <div className="glass rounded-2xl p-8">
+            <div className="glass-solid rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Let's talk</h2>
               
               <div className="space-y-6">
@@ -107,7 +105,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="glass rounded-2xl p-8">
+            <div className="glass-solid rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Send us a message</h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">

@@ -56,7 +56,7 @@ export default function Particles() {
     };
 
     const createParticles = () => {
-      const count = Math.floor((window.innerWidth * window.innerHeight) / 15000);
+      const count = Math.floor((window.innerWidth * window.innerHeight) / 12000);
       particles = [];
       
       for (let i = 0; i < count; i++) {
@@ -67,7 +67,7 @@ export default function Particles() {
           vy: (Math.random() - 0.5) * 0.3,
           size: Math.random() * 2 + 1,
           color: colors[Math.floor(Math.random() * colors.length)],
-          opacity: Math.random() * 0.3 + 0.1,
+          opacity: Math.random() * 0.3 + 0.3,
         });
       }
     };
@@ -86,7 +86,7 @@ export default function Particles() {
       ctx.beginPath();
       ctx.arc(point.x, point.y, 16, 0, Math.PI * 2);
       ctx.strokeStyle = point.color;
-      ctx.globalAlpha = 0.4;
+      ctx.globalAlpha = 0.48;
       ctx.lineWidth = 2;
       ctx.stroke();
       
@@ -94,7 +94,7 @@ export default function Particles() {
       ctx.beginPath();
       ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
       ctx.fillStyle = point.color;
-      ctx.globalAlpha = 0.6;
+      ctx.globalAlpha = 0.72;
       ctx.fill();
       
       ctx.globalAlpha = 1;
@@ -208,7 +208,7 @@ export default function Particles() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-10"
+      className="fixed inset-0 pointer-events-none z-0"
     />
   );
 }
