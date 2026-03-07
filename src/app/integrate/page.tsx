@@ -313,7 +313,7 @@ function StepCard({ step, index, isLeft }: {
 
 // Mini workflow animations for each step
 function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
-  const size = "w-[500px] h-[500px]";
+  const size = "w-[600px] h-[600px]";
   const position = isLeft ? "right-[15%]" : "left-[15%]";
   const animations = {
     1: ( // Connect - apps connecting
