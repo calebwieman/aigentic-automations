@@ -96,7 +96,6 @@ export default function HeroTitle() {
       <GearWithDust delay={0} />
       m
       <GearWithDust delay={1} />
-      ti
       ns
     </span>
   );
