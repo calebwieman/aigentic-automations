@@ -30,7 +30,7 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
     return () => clearTimeout(startTimeout);
   }, [delay]);
 
-  // Generate dust particles
+  // Dust particles - completely independent
   const dustParticles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
     x: Math.random() * 20 - 10,
@@ -41,7 +41,7 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
 
   return (
     <span className="inline-block relative">
-      {/* Dust particles - outside the bouncing span */}
+      {/* Dust - completely separate from gear */}
       {dustParticles.map((particle) => (
         <motion.span
           key={particle.id}
@@ -50,22 +50,22 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
             width: particle.size,
             height: particle.size,
             left: `calc(50% + ${particle.x}px)`,
-            top: -2,
+            bottom: -4,
           }}
           animate={{
-            y: [0, -15 - Math.random() * 10],
+            y: [0, -12 - Math.random() * 8],
             opacity: [0, 0.5, 0],
           }}
           transition={{
             duration: particle.duration,
             repeat: Infinity,
-            delay: delay + particle.delay,
+            delay: particle.delay,
             ease: "easeOut",
           }}
         />
       ))}
       
-      {/* Bouncing gear */}
+      {/* Gear - bounces independently */}
       <motion.span
         animate={{ y: bounceOffset }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -76,20 +76,7 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
           className="w-[0.7em] h-[0.7em] inline-block"
           style={{ color: "white", display: "inline-block" }}
           animate={{
-            rotate: [
-              0,
-              30,
-              90,
-              450,
-              510,
-              540,
-              900,
-              960,
-              990,
-              1350,
-              1410,
-              1440,
-            ],
+            rotate: [0, 30, 90, 450, 510, 540, 900, 960, 990, 1350, 1410, 1440],
           }}
           transition={{
             duration: 13,
