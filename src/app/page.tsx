@@ -11,7 +11,7 @@ export default function Home() {
   const [pageKey, setPageKey] = useState(0);
 
   const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
     setPageKey(prev => prev + 1);
   };
 
