@@ -50,9 +50,15 @@ export default function TiltCard({
     setGlowPos({ x: 0, y: 0 });
   };
 
-  // All cards use blue glow
+  // Snap to blue or orange at the middle
   const getColor = () => {
-    return 220; // Blue
+    if (glowPos.x === 0) return 220; // Default blue
+    const pct = glowPos.x / (ref.current?.offsetWidth || 300);
+    if (pct < 0.5) {
+      return 220; // Blue on left
+    } else {
+      return 30; // Orange on right
+    }
   };
 
   const hue = getColor();
