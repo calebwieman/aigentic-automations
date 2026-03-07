@@ -13,13 +13,11 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
   // Random bounce effect
   useEffect(() => {
     const triggerBounce = () => {
-      // Quick bounce up then down
       setBounceOffset(-3);
       setTimeout(() => setBounceOffset(3), 150);
       setTimeout(() => setBounceOffset(0), 300);
     };
 
-    // Random interval between bounces (2.5-3.5 seconds)
     const scheduleNextBounce = () => {
       const randomDelay = 2500 + Math.random() * 1000;
       setTimeout(() => {
@@ -28,7 +26,6 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
       }, randomDelay);
     };
 
-    // Start bouncing after delay
     const startTimeout = setTimeout(scheduleNextBounce, delay * 1000);
     return () => clearTimeout(startTimeout);
   }, [delay]);
@@ -53,26 +50,9 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
       <motion.svg
         viewBox="0 0 24 24"
         className="w-[0.7em] h-[0.7em] inline-block"
-        style={{ color: "white" }}
-        animate={{
-          rotate: [
-            { value: 0, duration: 0 },
-            { value: 30, duration: 1, ease: "easeIn" },
-            { value: 360, duration: 2, ease: "linear" },
-            { value: 390, duration: 1, ease: "easeOut" },
-            { value: 390, duration: 2 },
-            { value: 420, duration: 1, ease: "easeIn" },
-            { value: 750, duration: 2, ease: "linear" },
-            { value: 780, duration: 1, ease: "easeOut" },
-            { value: 780, duration: 2 },
-          ],
-        }}
-        transition={{
-          duration: 13,
-          repeat: Infinity,
-          delay: delay,
-          ease: "linear",
-        }}
+        style={{ color: "white", display: "inline-block" }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 8, repeat: Infinity, delay: delay + 1, ease: "linear" }}
       >
         <path
           fill="currentColor"
