@@ -219,6 +219,9 @@ function StepCard({ step, index, isLeft }: {
       {/* Center dot */}
       <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2 z-20 shadow-[0_0_20px_rgba(59,130,246,0.8)]" />
       
+      {/* Step animation on opposite side */}
+      <StepAnimation stepId={step.id} isLeft={isLeft} />
+      
       <motion.div
         initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -308,3 +311,123 @@ function StepCard({ step, index, isLeft }: {
   );
 }
 
+
+// Simple decorative animations for each step using Framer Motion
+function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
+  const position = isLeft ? "right-8" : "left-8";
+  
+  const animations = {
+    1: ( // Connect - pulsing dots
+      <div className="relative w-32 h-32">
+        <motion.div 
+          className="absolute w-12 h-12 rounded-full bg-blue-500/30"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{ left: '10%', top: '30%' }}
+        />
+        <motion.div 
+          className="absolute w-8 h-8 rounded-full bg-orange-500/40"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+          style={{ right: '10%', bottom: '30%' }}
+        />
+        <motion.div 
+          className="absolute w-1 h-1 bg-white rounded-full"
+          animate={{ x: [0, 20, 0], opacity: [0, 1, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          style={{ left: '35%', top: '45%' }}
+        />
+      </div>
+    ),
+    2: ( // Tell Us - floating bubbles
+      <div className="relative w-32 h-32">
+        <motion.div 
+          className="absolute px-4 py-2 rounded-2xl bg-blue-500/20 border border-blue-500/40"
+          animate={{ y: [0, -10, 0], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{ left: '10%', top: '20%' }}
+        />
+        <motion.div 
+          className="absolute px-4 py-2 rounded-2xl bg-orange-500/20 border border-orange-500/40"
+          animate={{ y: [0, -8, 0], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+          style={{ right: '10%', bottom: '25%' }}
+        />
+      </div>
+    ),
+    3: ( // Design - grid pulse
+      <div className="relative w-32 h-32">
+        <motion.div 
+          className="absolute inset-0 border border-blue-500/20 rounded-lg"
+          animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute inset-4 border border-orange-500/30 rounded"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div 
+          className="absolute w-3 h-3 bg-orange-500 rounded-full"
+          animate={{ x: [0, 10, 0], y: [0, -10, 0] }}
+          transition={{ duration: 3, repeat: Infinity }}
+          style={{ left: '45%', top: '45%' }}
+        />
+      </div>
+    ),
+    4: ( // Build - spinning rings
+      <div className="relative w-32 h-32">
+        <motion.div 
+          className="absolute inset-0 border-2 border-blue-500/20 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div 
+          className="absolute inset-2 border border-orange-500/30 rounded-full"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div 
+          className="absolute inset-6 border border-blue-500/40 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+    ),
+    5: ( // Watch It Run - play pulse
+      <div className="relative w-32 h-32">
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <motion.div 
+            className="w-16 h-16 rounded-full bg-blue-500/20"
+            animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </motion.div>
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <motion.div 
+            className="w-0 h-0 border-t-8 border-t-transparent border-l-[20px] border-l-orange-500 border-b-8 border-b-transparent"
+            animate={{ x: [0, 5, 0] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          />
+        </motion.div>
+      </div>
+    ),
+  };
+
+  return (
+    <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 ${position}`}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: false }}
+      >
+        {animations[stepId as keyof typeof animations]}
+      </motion.div>
+    </div>
+  );
+}
