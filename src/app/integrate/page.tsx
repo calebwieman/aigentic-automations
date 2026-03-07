@@ -129,7 +129,7 @@ export default function Integrate() {
   return (
     <div ref={containerRef} className="bg-black text-white" style={{ height: '700vh' }}>
 
-      <section className="h-screen flex items-center justify-center relative z-10">
+      <section className="h-screen flex items-center justify-center py-4 relative z-10">
         <div className="text-center px-6 max-w-3xl">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -166,7 +166,7 @@ export default function Integrate() {
         />
       ))}
 
-      <section className="h-screen flex items-center justify-center relative z-10">
+      <section className="h-screen flex items-center justify-center py-4 relative z-10">
         <div className="text-center px-6">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -202,24 +202,41 @@ function StepCard({ step, index, isLeft }: {
 }) {
   return (
     <section className="h-screen flex items-center justify-center px-6 relative z-10">
+      {/* Connecting line segment */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent -translate-x-1/2" />
+      
+      {/* Center dot */}
+      <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2 z-20 shadow-[0_0_20px_rgba(59,130,246,0.8)]" />
+      
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false, margin: "-20%" }}
+        initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
+        viewport={{ once: false, margin: "-30%" }}
         className={`max-w-md w-full ${isLeft ? 'mr-[50%] pr-12 text-right' : 'ml-[50%] pl-12 text-left'}`}
       >
-        <TiltCard>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="group"
+        >
           <div 
-            className="rounded-2xl p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-300"
-            style={{ background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)" }}
+            className="rounded-2xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-300 bg-gradient-to-br from-gray-900 to-black"
+            style={{ 
+              background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)",
+              boxShadow: "0 0 30px rgba(59,130,246,0.1)"
+            }}
           >
-            <div className="flex items-center gap-4 mb-4">
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="flex items-center gap-4 mb-4"
+            >
               <span className="text-4xl">{step.icon}</span>
               <span className="text-4xl font-bold text-blue-500">{String(step.id).padStart(2, '0')}</span>
-            </div>
+            </motion.div>
             
-            <h2 className="text-3xl font-bold mb-4">{step.title}</h2>
+            <h2 className="text-3xl font-bold mb-4 group-hover:text-blue-400 transition-colors">{step.title}</h2>
             <p className="text-gray-400 text-lg mb-6">{step.description}</p>
             
             {/* App logos for first step */}
@@ -237,9 +254,13 @@ function StepCard({ step, index, isLeft }: {
               </div>
             )}
             
-            <button className="px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 transition-all hover:scale-105">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/20 transition-all"
+            >
               {step.interactive} →
-            </button>
+            </motion.button>
           </div>
         </TiltCard>
       </motion.div>
