@@ -34,15 +34,15 @@ function GearWithDust({ delay = 0 }: GearWithDustProps) {
   const dustParticles = Array.from({ length: 15 }, (_, i) => ({
     id: i,
     x: Math.random() * 24 - 12,
-    y: Math.random() * 8 + 4, // Closer to gear from start
+    y: Math.random() * 4 + 2, // Start very close to gear
     size: 1.5 + Math.random() * 3,
-    delay: Math.random() * 3,
+    delay: Math.random() * 2,
     duration: 2.5 + Math.random() * 2.5,
   }));
 
   return (
     <motion.span
-      className="inline-block relative"
+      className="inline-block"
       animate={{ y: bounceOffset }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
     >
