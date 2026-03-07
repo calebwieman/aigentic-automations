@@ -212,7 +212,7 @@ function StepCard({ step, index, isLeft }: {
   isLeft: boolean,
 }) {
   return (
-    <section className="h-screen flex items-center justify-center px-6 relative z-10">
+    <section className="h-screen flex items-center justify-center px-6 relative z-10 overflow-visible">
       {/* Connecting line segment */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent -translate-x-1/2" />
       
@@ -314,11 +314,11 @@ function StepCard({ step, index, isLeft }: {
 
 // Simple decorative animations for each step using Framer Motion
 function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
-  const position = isLeft ? "right-8" : "left-8";
+  const position = isLeft ? "right-[15%]" : "left-[15%]";
   
   const animations = {
     1: ( // Connect - pulsing dots
-      <div className="relative w-32 h-32">
+      <div className="relative w-96 h-96">
         <motion.div 
           className="absolute w-12 h-12 rounded-full bg-blue-500/30"
           animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
@@ -340,7 +340,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     2: ( // Tell Us - floating bubbles
-      <div className="relative w-32 h-32">
+      <div className="relative w-96 h-96">
         <motion.div 
           className="absolute px-4 py-2 rounded-2xl bg-blue-500/20 border border-blue-500/40"
           animate={{ y: [0, -10, 0], opacity: [0.5, 0.8, 0.5] }}
@@ -356,7 +356,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     3: ( // Design - grid pulse
-      <div className="relative w-32 h-32">
+      <div className="relative w-96 h-96">
         <motion.div 
           className="absolute inset-0 border border-blue-500/20 rounded-lg"
           animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }}
@@ -376,7 +376,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     4: ( // Build - spinning rings
-      <div className="relative w-32 h-32">
+      <div className="relative w-96 h-96">
         <motion.div 
           className="absolute inset-0 border-2 border-blue-500/20 rounded-full"
           animate={{ rotate: 360 }}
@@ -395,7 +395,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     5: ( // Watch It Run - play pulse
-      <div className="relative w-32 h-32">
+      <div className="relative w-96 h-96">
         <motion.div 
           className="absolute inset-0 flex items-center justify-center"
         >
@@ -419,7 +419,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
   };
 
   return (
-    <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 ${position}`}>
+    <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 ${position} overflow-visible`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
