@@ -163,14 +163,6 @@ export default function Integrate() {
         />
       </svg>
 
-      <div 
-        className="fixed top-0 left-0 w-screen pointer-events-none z-30"
-        style={{
-          height: '50vh',
-          background: '#000',
-        }}
-      />
-
       <section className="h-screen flex items-center justify-center relative z-10">
         <div className="text-center px-6 max-w-3xl">
           <motion.h1 
