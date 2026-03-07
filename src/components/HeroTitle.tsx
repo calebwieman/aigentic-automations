@@ -94,7 +94,7 @@ export default function HeroTitle() {
     <span className="gradient-text">
       Aut
       <GearWithDust delay={0} />
-      m
+      mati
       <GearWithDust delay={1} />
       ns
     </span>
