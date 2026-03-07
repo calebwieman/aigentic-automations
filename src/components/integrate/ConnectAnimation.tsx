@@ -233,7 +233,7 @@ export default function ConnectAnimation() {
                 />
                 
                 {/* Tool icon */}
-                <g transform="scale(0.35) translate(-12, -12)">
+                <g transform="scale(0.22) translate(-12, -12)">
                   <ToolIcon type={tool.icon} className="w-5 h-5 text-white" />
                 </g>
                 
