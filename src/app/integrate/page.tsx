@@ -129,8 +129,19 @@ export default function Integrate() {
   return (
     <div ref={containerRef} className="bg-black text-white" style={{ height: '700vh' }}>
 
+      {/* Back button */}
+      <a 
+        href="/" 
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-all"
+      >
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        Back
+      </a>
+
       <section className="h-screen flex items-center py-2 relative z-10">
-        <div className="text-center px-6 max-w-3xl">
+        <div className="w-full text-center px-6 max-w-3xl mx-auto">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +178,7 @@ export default function Integrate() {
       ))}
 
       <section className="h-screen flex items-center py-2 relative z-10">
-        <div className="text-center px-6">
+        <div className="w-full text-center px-6 mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
