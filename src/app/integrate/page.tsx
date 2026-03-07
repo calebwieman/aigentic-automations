@@ -315,7 +315,7 @@ function StepCard({ step, index, isLeft }: {
 
 // Simple decorative animations for each step using Framer Motion
 function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
-  const position = isLeft ? "right-[25%]" : "left-[25%]";
+  const position = isLeft ? "right-[40%]" : "left-[40%]";
   
   const animations = {
     1: ( // Connect - network constellation
