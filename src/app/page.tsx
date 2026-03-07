@@ -12,7 +12,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 glass">
         <div className="w-full px-6 py-4 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity" onClick={(e) => { e.preventDefault(); window.location.reload(); }}>
             <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-8 w-auto" />
             <span className="text-white font-semibold text-lg">Aigentic Automations</span>
           </a>
