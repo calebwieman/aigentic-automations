@@ -313,7 +313,8 @@ function StepCard({ step, index, isLeft }: {
 
 // Mini workflow animations for each step
 function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
-  const size = "w-40 h-40";
+  const size = "w-64 h-64";
+  const position = isLeft ? "right-[20%]" : "left-[20%]";
   const animations = {
     1: ( // Connect - apps connecting
       <svg viewBox="0 0 100 100" className={`${size} opacity-70`}>
@@ -367,7 +368,7 @@ function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean
   };
   
   return (
-    <div className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 ${isLeft ? 'right-[5%]' : 'left-[5%]'} items-center justify-center`}>
+    <div className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 ${position} items-center justify-center`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
