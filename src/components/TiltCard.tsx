@@ -8,6 +8,7 @@ interface TiltCardProps {
   className?: string;
   tiltIntensity?: number;
   scaleOnHover?: number;
+  glowColor?: string;
 }
 
 export default function TiltCard({
@@ -15,6 +16,7 @@ export default function TiltCard({
   className = "",
   tiltIntensity = 10,
   scaleOnHover = 1.02,
+  glowColor,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
@@ -50,8 +52,9 @@ export default function TiltCard({
     setGlowPos({ x: 0, y: 0 });
   };
 
-  // Snap to blue or orange at the middle
+  // Snap to blue or orange at the middle - use glowColor prop if provided
   const getColor = () => {
+    if (glowColor) return glowColor === "orange" ? 30 : 220;
     if (glowPos.x === 0) return 220; // Default blue
     const pct = glowPos.x / (ref.current?.offsetWidth || 300);
     if (pct < 0.5) {

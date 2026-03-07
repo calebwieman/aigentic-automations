@@ -249,7 +249,7 @@ export default function Home() {
                 { quote: "The personal support is incredible. They actually care.", name: "Mike K.", role: "CEO, GrowthCo", color: "blue" },
               ].map((testimonial, i) => (
                 <ScrollReveal key={testimonial.name} delay={i * 0.15}>
-                  <TiltCard>
+                  <TiltCard glowColor={i === 1 ? "orange" : "blue"}>
                     <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden">
                       {/* Quote mark decoration */}
                       <div className="absolute top-2 right-4 text-white/10 text-6xl font-serif leading-none opacity-30 group-hover:opacity-50 transition-opacity">"</div>
