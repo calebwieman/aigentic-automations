@@ -313,9 +313,10 @@ function StepCard({ step, index, isLeft }: {
 
 // Mini workflow animations for each step
 function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
+  const size = "w-40 h-40";
   const animations = {
     1: ( // Connect - apps connecting
-      <svg viewBox="0 0 100 100" className="w-24 h-24 opacity-60">
+      <svg viewBox="0 0 100 100" className={`${size} opacity-70`}>
         <circle cx="30" cy="50" r="12" fill="#3b82f6" className="animate-pulse" />
         <circle cx="70" cy="50" r="12" fill="#f59e0b" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
         <line x1="42" y1="50" x2="58" y2="50" stroke="#3b82f6" strokeWidth="2" className="animate-pulse" />
@@ -324,7 +325,7 @@ function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean
       </svg>
     ),
     2: ( // Tell Us - chat bubbles
-      <svg viewBox="0 0 100 100" className="w-24 h-24 opacity-60">
+      <svg viewBox="0 0 100 100" className={`${size} opacity-70`}>
         <rect x="15" y="30" width="50" height="30" rx="8" fill="#3b82f6" opacity="0.6" className="animate-pulse" />
         <polygon points="25,60 35,60 30,70" fill="#3b82f6" opacity="0.6" />
         <rect x="35" y="45" width="40" height="25" rx="8" fill="#f59e0b" opacity="0.6" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
@@ -332,7 +333,7 @@ function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean
       </svg>
     ),
     3: ( // Design - blueprint grid
-      <svg viewBox="0 0 100 100" className="w-24 h-24 opacity-60">
+      <svg viewBox="0 0 100 100" className={`${size} opacity-70`}>
         <rect x="10" y="10" width="80" height="80" rx="4" fill="none" stroke="#3b82f6" strokeWidth="1" opacity="0.5" />
         <line x1="10" y1="30" x2="90" y2="30" stroke="#3b82f6" strokeWidth="0.5" opacity="0.3" />
         <line x1="10" y1="50" x2="90" y2="50" stroke="#3b82f6" strokeWidth="0.5" opacity="0.3" />
@@ -345,7 +346,7 @@ function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean
       </svg>
     ),
     4: ( // Build - gears
-      <svg viewBox="0 0 100 100" className="w-24 h-24 opacity-60">
+      <svg viewBox="0 0 100 100" className={`${size} opacity-70`}>
         <circle cx="35" cy="50" r="15" fill="none" stroke="#3b82f6" strokeWidth="3" className="animate-spin" style={{ animationDuration: '4s' }} />
         <circle cx="35" cy="50" r="6" fill="#3b82f6" />
         <circle cx="70" cy="35" r="12" fill="none" stroke="#f59e0b" strokeWidth="2.5" className="animate-spin" style={{ animationDuration: '3s', animationDirection: 'reverse' }} />
@@ -355,7 +356,7 @@ function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean
       </svg>
     ),
     5: ( // Watch It Run - play/running
-      <svg viewBox="0 0 100 100" className="w-24 h-24 opacity-60">
+      <svg viewBox="0 0 100 100" className={`${size} opacity-70`}>
         <circle cx="50" cy="50" r="25" fill="none" stroke="#3b82f6" strokeWidth="2" className="animate-ping" style={{ animationDuration: '2s' }} />
         <circle cx="50" cy="50" r="20" fill="none" stroke="#f59e0b" strokeWidth="2" className="animate-ping" style={{ animationDuration: '2s', animationDelay: '0.5s' }} />
         <polygon points="45,35 45,65 70,50" fill="#f59e0b" className="animate-pulse" />
@@ -366,7 +367,7 @@ function WorkflowAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean
   };
   
   return (
-    <div className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 ${isLeft ? 'right-[10%]' : 'left-[10%]'} items-center justify-center`}>
+    <div className={`hidden lg:flex absolute top-1/2 -translate-y-1/2 ${isLeft ? 'right-[5%]' : 'left-[5%]'} items-center justify-center`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
