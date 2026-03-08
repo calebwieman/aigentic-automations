@@ -47,7 +47,7 @@ export default function Demo() {
             <div className="flex flex-col py-4 gap-4">
               <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
-              <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm mx-4 hover:bg-gray-200 transition-colors w-fit" onClick={() => setMobileMenuOpen(false)}>
+              <a href="/contact" className="mx-4 px-4 py-3 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors text-center" onClick={() => setMobileMenuOpen(false)}>
                 Get Started
               </a>
             </div>

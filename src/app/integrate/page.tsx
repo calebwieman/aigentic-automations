@@ -4,6 +4,7 @@ import { useRef, useMemo, useEffect, useState, ReactElement } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 import ConnectAnimation from "@/components/integrate/ConnectAnimation";
+import ChatFlowAnimation from "@/components/integrate/ChatFlowAnimation";
 
 const steps = [
   {
@@ -323,20 +324,9 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
         <ConnectAnimation />
       </div>
     ),
-    2: ( // Tell Us - floating bubbles
-      <div className="relative w-[500px] h-[500px]">
-        <motion.div 
-          className="absolute px-4 py-2 rounded-2xl bg-blue-500/40 border border-blue-500/60"
-          animate={{ y: [0, -10, 0], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ left: '10%', top: '20%' }}
-        />
-        <motion.div 
-          className="absolute px-4 py-2 rounded-2xl bg-orange-500/40 border border-orange-500/60"
-          animate={{ y: [0, -8, 0], opacity: [0.6, 0.9, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-          style={{ right: '10%', bottom: '25%' }}
-        />
+    2: ( // Tell Us - chat flow
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
+        <ChatFlowAnimation />
       </div>
     ),
     3: ( // Design - grid pulse
