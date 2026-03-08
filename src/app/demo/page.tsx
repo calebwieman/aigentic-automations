@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Demo() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -42,14 +47,12 @@ export default function Demo() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
+        {mounted && mobileMenuOpen && (
           <div className="block md:hidden border-t border-white/10">
             <div className="flex flex-col py-4 gap-4">
               <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
-              <a href="/contact" className="mx-4 px-4 py-3 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors text-center" onClick={() => setMobileMenuOpen(false)}>
-                Get Started
-              </a>
+              <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Get Started</a>
             </div>
           </div>
         )}

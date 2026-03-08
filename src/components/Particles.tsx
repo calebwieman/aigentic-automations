@@ -30,14 +30,31 @@ export default function Particles() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Check if mobile
+    const isMobile = typeof window !== 'undefined' && (
+      window.matchMedia('(pointer: coarse)').matches || 
+      window.innerWidth < 1024
+    );
+
+    // Set canvas size first
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Store initial dimensions to prevent resize issues on mobile scroll
+    let initialWidth = window.innerWidth;
+    let initialHeight = window.innerHeight;
+
     const colors = ["#3b82f6", "#f59e0b", "#60a5fa", "#fb923c"];
     let particles: Particle[] = [];
     let mouseX = -1000;
     let mouseY = -1000;
     let isMouseConnected = false;
     
-    // Background moving points (like cursors)
-    const movingPoints: MovingPoint[] = [
+    // Reduce moving points on mobile
+    const movingPointSpeed = isMobile ? 0.15 : 0.3;
+    const movingPoints: MovingPoint[] = isMobile ? [
+      { x: 0, y: 0, vx: movingPointSpeed, vy: movingPointSpeed * 0.7, color: "#3b82f6" },
+    ] : [
       { x: 0, y: 0, vx: 0.3, vy: 0.2, color: "#3b82f6" },
       { x: 0, y: 0, vx: -0.2, vy: 0.3, color: "#3b82f6" },
       { x: 0, y: 0, vx: 0.25, vy: -0.25, color: "#f59e0b" },
@@ -46,8 +63,26 @@ export default function Particles() {
     let animationId: number;
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
+      
+      // On mobile, only resize if dimensions actually changed significantly
+      // This prevents teleport when browser chrome shows/hides on scroll
+      if (isMobile) {
+        const widthDiff = Math.abs(newWidth - initialWidth);
+        const heightDiff = Math.abs(newHeight - initialHeight);
+        
+        // Only recreate if changed by more than 50px (browser chrome toggle)
+        if (widthDiff < 50 && heightDiff < 50) {
+          return; // Skip resize, keep existing particles
+        }
+      }
+      
+      initialWidth = newWidth;
+      initialHeight = newHeight;
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+      
       // Initialize moving points at random positions
       movingPoints.forEach(p => {
         p.x = Math.random() * canvas.width;
@@ -56,17 +91,27 @@ export default function Particles() {
     };
 
     const createParticles = () => {
-      const count = Math.floor((window.innerWidth * window.innerHeight) / 12000);
+      // More particles on mobile now that teleport is fixed, but fewer colors
+      const baseCount = isMobile ? 18000 : 12000;
+      const count = Math.floor((window.innerWidth * window.innerHeight) / baseCount);
+      // Slower velocity on mobile
+      const maxVel = isMobile ? 0.15 : 0.3;
+      
+      // Mostly black particles with just a few colored ones on mobile
+      const mobileColors = isMobile 
+        ? ["#3b82f6", "#f59e0b", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"] // ~80% black
+        : colors;
+      
       particles = [];
       
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
+          vx: (Math.random() - 0.5) * maxVel,
+          vy: (Math.random() - 0.5) * maxVel,
           size: Math.random() * 2 + 1,
-          color: colors[Math.floor(Math.random() * colors.length)],
+          color: mobileColors[Math.floor(Math.random() * mobileColors.length)],
           opacity: Math.random() * 0.3 + 0.3,
         });
       }
@@ -82,11 +127,15 @@ export default function Particles() {
     };
 
     const drawMovingPoint = (point: MovingPoint) => {
+      // Less prominent on mobile
+      const alpha = isMobile ? 0.25 : 0.48;
+      const innerAlpha = isMobile ? 0.4 : 0.72;
+      
       // Outer ring
       ctx.beginPath();
       ctx.arc(point.x, point.y, 16, 0, Math.PI * 2);
       ctx.strokeStyle = point.color;
-      ctx.globalAlpha = 0.48;
+      ctx.globalAlpha = alpha;
       ctx.lineWidth = 2;
       ctx.stroke();
       
@@ -94,7 +143,7 @@ export default function Particles() {
       ctx.beginPath();
       ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
       ctx.fillStyle = point.color;
-      ctx.globalAlpha = 0.72;
+      ctx.globalAlpha = innerAlpha;
       ctx.fill();
       
       ctx.globalAlpha = 1;
@@ -176,9 +225,19 @@ export default function Particles() {
     createParticles();
     animate();
 
+    let resizeTimeout: ReturnType<typeof setTimeout>;
     const onResize = () => {
-      resize();
-      createParticles();
+      // Debounce resize on mobile
+      if (isMobile) {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          resize();
+          createParticles();
+        }, 200);
+      } else {
+        resize();
+        createParticles();
+      }
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -194,13 +253,18 @@ export default function Particles() {
     };
 
     window.addEventListener("resize", onResize);
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseleave", onMouseLeave);
+    // Only add mouse listeners on desktop
+    if (!isMobile) {
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseleave", onMouseLeave);
+    }
 
     return () => {
       window.removeEventListener("resize", onResize);
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseleave", onMouseLeave);
+      if (!isMobile) {
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("mouseleave", onMouseLeave);
+      }
       cancelAnimationFrame(animationId);
     };
   }, []);

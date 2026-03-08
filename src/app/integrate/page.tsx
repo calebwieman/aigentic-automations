@@ -325,7 +325,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     2: ( // Tell Us - chat flow
-      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] -translate-x-[25%]">
         <ChatFlowAnimation />
       </div>
     ),

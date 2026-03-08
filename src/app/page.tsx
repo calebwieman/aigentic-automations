@@ -1,7 +1,7 @@
 "use client";
 import HeroTitle from "@/components/HeroTitle";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -12,6 +12,11 @@ import GradientBorderCard from "@/components/GradientBorderCard";
 export default function Home() {
   const [pageKey, setPageKey] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLogoClick = () => {
     window.scrollTo(0, 0);
@@ -54,14 +59,12 @@ export default function Home() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
+        {mounted && mobileMenuOpen && (
           <div className="block md:hidden border-t border-white/10">
             <div className="flex flex-col py-4 gap-4">
               <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
-              <a href="/contact" className="mx-4 px-4 py-3 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors text-center" onClick={() => setMobileMenuOpen(false)}>
-                Get Started
-              </a>
+              <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Get Started</a>
             </div>
           </div>
         )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, ReactElement, useCallback } from "react";
+import { useEffect, useState, ReactElement, useRef } from "react";
 
 interface ToolNode {
   id: string;
@@ -87,13 +87,36 @@ function ToolIcon({ type, className }: { type: ToolNode["icon"]; className?: str
 }
 
 export default function ConnectAnimation() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
   const [visibleNodes, setVisibleNodes] = useState<Set<string>>(new Set());
   const [visibleConnections, setVisibleConnections] = useState<Set<string>>(new Set());
   const [pulseNode, setPulseNode] = useState<string | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasPlayed) {
+          setIsVisible(true);
+          setHasPlayed(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasPlayed]);
+
+  useEffect(() => {
+    if (!isVisible || hasPlayed) return;
+
     setMounted(true);
     
     // Animate nodes appearing one by one
@@ -131,7 +154,7 @@ export default function ConnectAnimation() {
     }, 4000);
     
     return () => clearInterval(pulseInterval);
-  }, []);
+  }, [isVisible, hasPlayed, visibleNodes.size]);
 
   const getNodePosition = (id: string) => {
     const node = tools.find(t => t.id === id);
@@ -139,7 +162,7 @@ export default function ConnectAnimation() {
   };
 
   return (
-    <div className="relative w-full h-full min-h-[400px]">
+    <div ref={containerRef} className="relative w-full h-full min-h-[400px]">
       <svg
         viewBox="0 0 100 100"
         className="w-full h-full"

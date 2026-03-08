@@ -4,6 +4,11 @@ import { useEffect } from "react";
 
 export default function CustomCursor() {
   useEffect(() => {
+    // Disable on touch devices and mobile
+    if (typeof window !== 'undefined' && (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024)) {
+      return;
+    }
+
     // Create cursor elements
     const cursor = document.createElement("div");
     const dot = document.createElement("div");

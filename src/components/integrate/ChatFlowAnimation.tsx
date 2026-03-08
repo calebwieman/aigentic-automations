@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface ChatBubble {
   id: string;
@@ -27,13 +27,33 @@ const connections = [
 ];
 
 export default function ChatFlowAnimation() {
-  const [mounted, setMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
   const [visibleBubbles, setVisibleBubbles] = useState<Set<string>>(new Set());
   const [visibleConnections, setVisibleConnections] = useState<Set<string>>(new Set());
   const [pulseBubble, setPulseBubble] = useState<string | null>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasPlayed) {
+          setIsVisible(true);
+          setHasPlayed(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasPlayed]);
+
+  useEffect(() => {
+    if (!isVisible || hasPlayed) return;
     
     const bubbleSequence = async () => {
       for (let i = 0; i < chatBubbles.length; i++) {
@@ -64,7 +84,7 @@ export default function ChatFlowAnimation() {
     }, 5000);
     
     return () => clearInterval(pulseInterval);
-  }, []);
+  }, [isVisible, hasPlayed]);
 
   const getBubblePosition = (id: string) => {
     const bubble = chatBubbles.find(b => b.id === id);
@@ -72,7 +92,7 @@ export default function ChatFlowAnimation() {
   };
 
   return (
-    <div className="relative w-full h-full min-h-[400px]">
+    <div ref={containerRef} className="relative w-full h-full min-h-[400px]">
       <svg viewBox="0 0 100 100" className="w-full h-full" style={{ overflow: "visible" }}>
         <defs>
           <filter id="glowChat" x="-50%" y="-50%" width="200%" height="200%">
