@@ -16,6 +16,19 @@ export const metadata: Metadata = {
   title: "Aigentic Automations | Build Automations. Save Time. Create Value.",
   description: "AI-powered business automations that save time and create value. Build your digital workforce today.",
   keywords: ["automations", "AI", "business", "productivity", "digital workforce"],
+  openGraph: {
+    title: "Aigentic Automations | Build Automations. Save Time. Create Value.",
+    description: "AI-powered business automations that save time and create value. Build your digital workforce today.",
+    url: "https://aigentic-automations.vercel.app",
+    siteName: "Aigentic Automations",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aigentic Automations",
+    description: "AI-powered business automations that save time and create value.",
+  },
 };
 
 export default function RootLayout({

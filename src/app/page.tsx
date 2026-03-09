@@ -364,9 +364,7 @@ export default function Home() {
             </div>
             
             <div className="flex items-center gap-6">
-              <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm">Privacy</a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm">Terms</a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm">Contact</a>
+              <a href="mailto:aigenticautomations@gmail.com" className="text-gray-500 hover:text-white transition-colors text-sm">Contact</a>
             </div>
           </div>
         </footer>
