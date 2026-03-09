@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface TiltCardProps {
@@ -20,6 +20,16 @@ export default function TiltCard({
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  
+  useEffect(() => {
+    // Disable tilt/glow on touch devices
+    setIsTouchDevice(
+      'ontouchstart' in window || 
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches
+    );
+  }, []);
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -30,7 +40,11 @@ export default function TiltCard({
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [`${tiltIntensity}deg`, `-${tiltIntensity}deg`]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [`-${tiltIntensity}deg`, `${tiltIntensity}deg`]);
 
+  // No rotation on touch devices
+  const noRotation = { rotateX: 0, rotateY: 0 };
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice) return;
     if (!ref.current) return;
     
     const rect = ref.current.getBoundingClientRect();
@@ -72,17 +86,16 @@ export default function TiltCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        rotateX,
-        rotateY,
+        ...(isTouchDevice ? noRotation : { rotateX, rotateY }),
         transformStyle: "preserve-3d",
         background: "linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)",
       }}
-      whileHover={{ scale: scaleOnHover }}
+      whileHover={isTouchDevice ? {} : { scale: scaleOnHover }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={`relative group rounded-2xl ${className}`}
     >
       {/* Inner card highlight - lighter around cursor */}
-      {glowPos.x > 0 && (
+      {!isTouchDevice && glowPos.x > 0 && (
         <div 
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{
@@ -91,8 +104,8 @@ export default function TiltCard({
         />
       )}
 
-      {/* Glow layers - only render when hovering */}
-      {glowPos.x > 0 && (
+      {/* Glow layers - only render when hovering, not on touch */}
+      {!isTouchDevice && glowPos.x > 0 && (
         <>
           {/* Outer hazy glow */}
           <div 

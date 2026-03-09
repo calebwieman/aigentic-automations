@@ -14,9 +14,9 @@ interface ChatBubble {
 const chatBubbles: ChatBubble[] = [
   { id: "q1", x: 20, y: 12, width: 25, height: 10, type: "question" },
   { id: "a1", x: 55, y: 18, width: 28, height: 12, type: "answer" },
-  { id: "q2", x: 15, y: 38, width: 30, height: 10, type: "question" },
-  { id: "a2", x: 52, y: 42, width: 32, height: 14, type: "answer" },
-  { id: "process", x: 25, y: 68, width: 50, height: 18, type: "process" },
+  { id: "q2", x: 15, y: 40, width: 30, height: 10, type: "question" },
+  { id: "a2", x: 52, y: 45, width: 32, height: 14, type: "answer" },
+  { id: "process", x: 25, y: 64, width: 50, height: 32, type: "answer" },
 ];
 
 const connections = [
@@ -28,21 +28,57 @@ const connections = [
 
 export default function ChatFlowAnimation() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasPlayed, setHasPlayed] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [visibleBubbles, setVisibleBubbles] = useState<Set<string>>(new Set());
   const [visibleConnections, setVisibleConnections] = useState<Set<string>>(new Set());
+  const [drawingConnections, setDrawingConnections] = useState<Set<string>>(new Set());
   const [pulseBubble, setPulseBubble] = useState<string | null>(null);
+  const [hoveredBubble, setHoveredBubble] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasPlayed) {
-          setIsVisible(true);
-          setHasPlayed(true);
+        if (entry.isIntersecting) {
+          setMounted(true);
+          
+          // Start with first bubble - faster timing
+          setTimeout(() => {
+            setVisibleBubbles(prev => new Set([...prev, "q1"]));
+            setPulseBubble("q1");
+            setTimeout(() => setPulseBubble(null), 240);
+          }, 120);
+          
+          // Chain: bubble → connection → bubble → connection → ... (1.25x faster)
+          let delay = 320;
+          
+          for (let i = 0; i < connections.length; i++) {
+            const [from, to] = connections[i];
+            
+            // Show connection after bubble appears
+            delay += 240;
+            setTimeout(() => {
+              setDrawingConnections(prev => new Set([...prev, `${from}-${to}`]));
+            }, delay);
+            
+            // Complete connection, show next bubble
+            delay += 160;
+            setTimeout(() => {
+              setVisibleConnections(prev => new Set([...prev, `${from}-${to}`]));
+              setDrawingConnections(prev => {
+                const next = new Set(prev);
+                next.delete(`${from}-${to}`);
+                return next;
+              });
+              setVisibleBubbles(prev => new Set([...prev, to]));
+              setPulseBubble(to);
+              setTimeout(() => setPulseBubble(null), 240);
+            }, delay);
+          }
+          
+          observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (containerRef.current) {
@@ -50,41 +86,7 @@ export default function ChatFlowAnimation() {
     }
 
     return () => observer.disconnect();
-  }, [hasPlayed]);
-
-  useEffect(() => {
-    if (!isVisible || hasPlayed) return;
-    
-    const bubbleSequence = async () => {
-      for (let i = 0; i < chatBubbles.length; i++) {
-        await new Promise(r => setTimeout(r, 700));
-        setVisibleBubbles(prev => new Set([...prev, chatBubbles[i].id]));
-        setPulseBubble(chatBubbles[i].id);
-        setTimeout(() => setPulseBubble(null), 1200);
-      }
-    };
-    
-    const connectionSequence = async () => {
-      await new Promise(r => setTimeout(r, chatBubbles.length * 700 + 1000));
-      for (let i = 0; i < connections.length; i++) {
-        await new Promise(r => setTimeout(r, 500));
-        setVisibleConnections(prev => new Set([...prev, `${connections[i][0]}-${connections[i][1]}`]));
-      }
-    };
-
-    bubbleSequence();
-    connectionSequence();
-    
-    const pulseInterval = setInterval(() => {
-      if (visibleBubbles.size === chatBubbles.length) {
-        const randomBubble = chatBubbles[Math.floor(Math.random() * chatBubbles.length)].id;
-        setPulseBubble(randomBubble);
-        setTimeout(() => setPulseBubble(null), 1500);
-      }
-    }, 5000);
-    
-    return () => clearInterval(pulseInterval);
-  }, [isVisible, hasPlayed]);
+  }, []);
 
   const getBubblePosition = (id: string) => {
     const bubble = chatBubbles.find(b => b.id === id);
@@ -121,18 +123,33 @@ export default function ChatFlowAnimation() {
             const fromPos = getBubblePosition(from);
             const toPos = getBubblePosition(to);
             const isVisible = visibleConnections.has(`${from}-${to}`) || visibleConnections.has(`${to}-${from}`);
+            const isDrawing = drawingConnections.has(`${from}-${to}`) || drawingConnections.has(`${to}-${from}`);
+            
+            // For a1 (2nd item) and a2 (4th item), connect to left side instead of top
+            const toBubble = chatBubbles.find(b => b.id === to);
+            const connectToLeft = toBubble && (toBubble.id === "a1" || toBubble.id === "a2");
+            
+            const x1 = fromPos.x;
+            const y1 = fromPos.y + fromPos.height/2;
+            const x2 = connectToLeft ? toPos.x - toPos.width/2 : toPos.x;
+            const y2 = connectToLeft ? toPos.y : toPos.y - toPos.height/2;
             
             return (
               <line
                 key={`${from}-${to}`}
-                x1={fromPos.x}
-                y1={fromPos.y + fromPos.height/2}
-                x2={toPos.x}
-                y2={toPos.y - toPos.height/2}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
                 stroke="url(#chatLineGradient)"
                 strokeWidth="0.5"
                 strokeLinecap="round"
-                style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.5s ease-out" }}
+                strokeDasharray={isDrawing ? "100" : "0"}
+                style={{
+                  opacity: isVisible || isDrawing ? 1 : 0,
+                  transition: isDrawing ? "stroke-dashoffset 0.4s linear" : "opacity 0.3s ease-out",
+                  strokeDashoffset: isDrawing ? 0 : 100,
+                }}
               />
             );
           })}
@@ -145,22 +162,31 @@ export default function ChatFlowAnimation() {
             const isPulsing = pulseBubble === bubble.id;
             
             return (
-              <g key={bubble.id} style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.4s ease-out" }}>
-                {bubble.type === "process" ? (
+              <g 
+                key={bubble.id} 
+                style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.4s ease-out", cursor: "pointer" }}
+                onMouseEnter={() => setHoveredBubble(bubble.id)}
+                onMouseLeave={() => setHoveredBubble(null)}
+              >
+                {bubble.id === "process" ? (
                   <g>
                     <rect
                       x={bubble.x} y={bubble.y}
                       width={bubble.width} height={bubble.height}
-                      rx="3" fill="url(#processGradient)"
-                      stroke={isPulsing ? "#f97316" : "#3b82f6"}
-                      strokeWidth="0.5"
-                      style={{ filter: isPulsing ? "url(#glowChat)" : "none", transition: "all 0.3s ease-out" }}
+                      rx="2" fill="#0f172a"
+                      stroke={pulseBubble === bubble.id || hoveredBubble === bubble.id ? "#f97316" : "#3b82f6"}
+                      strokeWidth="0.3"
+                      style={{ filter: pulseBubble === bubble.id || hoveredBubble === bubble.id ? "url(#glowChat)" : "none", transition: "all 0.3s ease-out" }}
                     />
-                    <g transform={`translate(${bubble.x + bubble.width/2}, ${bubble.y + bubble.height/2})`}>
-                      <circle r="4" fill="transparent" stroke="#3b82f6" strokeWidth="0.3" />
-                      <circle r="2" fill="#3b82f6" />
+                    <g fill="#3b82f6" opacity="0.8">
+                      <rect x={bubble.x + 2} y={bubble.y + 2} width="24" height="1.5" rx="0.5" />
+                      <rect x={bubble.x + 2} y={bubble.y + 5} width="20" height="1.5" rx="0.5" />
+                      <rect x={bubble.x + 2} y={bubble.y + 8} width="26" height="1.5" rx="0.5" />
+                      <rect x={bubble.x + 2} y={bubble.y + 11} width="16" height="1.5" rx="0.5" />
+                      <rect x={bubble.x + 2} y={bubble.y + 14} width="22" height="1.5" rx="0.5" />
+                      <rect x={bubble.x + 2} y={bubble.y + 17} width="10" height="1.5" rx="0.5" />
+                      <rect x={bubble.x + 2} y={bubble.y + 20} width="18" height="1.5" rx="0.5" />
                     </g>
-                    <text x={bubble.x + bubble.width/2} y={bubble.y + bubble.height + 5} textAnchor="middle" fill="#94a3b8" fontSize="3.5" fontFamily="system-ui">Process</text>
                   </g>
                 ) : (
                   <g>
@@ -168,9 +194,9 @@ export default function ChatFlowAnimation() {
                       x={bubble.x} y={bubble.y}
                       width={bubble.width} height={bubble.height}
                       rx="2" fill={bubble.type === "question" ? "#1e3a5f" : "#0f172a"}
-                      stroke={isPulsing ? "#f97316" : (bubble.type === "question" ? "#60a5fa" : "#3b82f6")}
+                      stroke={pulseBubble === bubble.id || hoveredBubble === bubble.id ? "#f97316" : (bubble.type === "question" ? "#60a5fa" : "#3b82f6")}
                       strokeWidth="0.3"
-                      style={{ filter: isPulsing ? "url(#glowChat)" : "none", transition: "all 0.3s ease-out" }}
+                      style={{ filter: pulseBubble === bubble.id || hoveredBubble === bubble.id ? "url(#glowChat)" : "none", transition: "all 0.3s ease-out" }}
                     />
                     {bubble.type === "question" && (
                       <g fill="#60a5fa">

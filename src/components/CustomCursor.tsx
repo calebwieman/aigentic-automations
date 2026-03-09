@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 export default function CustomCursor() {
   useEffect(() => {
-    // Disable on touch devices and mobile
-    if (typeof window !== 'undefined' && (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024)) {
+    // Disable on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) {
       return;
     }
 

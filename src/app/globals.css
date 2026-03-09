@@ -97,6 +97,19 @@ body {
   animation-delay: -5s;
 }
 
+/* Mobile mesh gradient - half size */
+@media (max-width: 768px) {
+  .mesh-gradient::before {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .mesh-gradient::after {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+
 /* Additional gradient blob for depth */
 .gradient-blob {
   position: fixed;
@@ -123,27 +136,11 @@ body {
   animation: blob 12s ease-in-out infinite reverse;
 }
 
-/* Mobile gradient blobs - smaller and in corners */
+/* Mobile gradient blobs - half size */
 @media (max-width: 768px) {
   .gradient-blob {
-    width: 200px;
-    height: 200px;
-    opacity: 0.15;
-    filter: blur(60px);
-  }
-
-  .gradient-blob-1 {
-    top: 0;
-    left: 0;
-    transform: translate(-30%, -30%);
-  }
-
-  .gradient-blob-2 {
-    top: auto;
-    bottom: 0;
-    right: 0;
-    left: auto;
-    transform: translate(30%, 30%);
+    width: 200px !important;
+    height: 200px !important;
   }
 }
 

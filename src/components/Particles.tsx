@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Particle {
   x: number;
@@ -22,19 +22,25 @@ interface MovingPoint {
 
 export default function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
+    // Check if mobile after mount
+    setIsMobile(
+      window.matchMedia('(pointer: coarse)').matches || 
+      window.innerWidth < 1024
+    );
+  }, []);
+
+  useEffect(() => {
+    // Don't render particles on mobile
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-
-    // Check if mobile
-    const isMobile = typeof window !== 'undefined' && (
-      window.matchMedia('(pointer: coarse)').matches || 
-      window.innerWidth < 1024
-    );
 
     // Set canvas size first
     canvas.width = window.innerWidth;
@@ -63,31 +69,8 @@ export default function Particles() {
     let animationId: number;
 
     const resize = () => {
-      const newWidth = window.innerWidth;
-      const newHeight = window.innerHeight;
-      
-      // On mobile, only resize if dimensions actually changed significantly
-      // This prevents teleport when browser chrome shows/hides on scroll
-      if (isMobile) {
-        const widthDiff = Math.abs(newWidth - initialWidth);
-        const heightDiff = Math.abs(newHeight - initialHeight);
-        
-        // Only recreate if changed by more than 50px (browser chrome toggle)
-        if (widthDiff < 50 && heightDiff < 50) {
-          return; // Skip resize, keep existing particles
-        }
-      }
-      
-      initialWidth = newWidth;
-      initialHeight = newHeight;
-      canvas.width = newWidth;
-      canvas.height = newHeight;
-      
-      // Initialize moving points at random positions
-      movingPoints.forEach(p => {
-        p.x = Math.random() * canvas.width;
-        p.y = Math.random() * canvas.height;
-      });
+      // On mobile, don't do anything - keep canvas and particles as is
+      return;
     };
 
     const createParticles = () => {
@@ -97,9 +80,9 @@ export default function Particles() {
       // Slower velocity on mobile
       const maxVel = isMobile ? 0.15 : 0.3;
       
-      // Mostly black particles with just a few colored ones on mobile
+      // Colored particles only on mobile
       const mobileColors = isMobile 
-        ? ["#3b82f6", "#f59e0b", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"] // ~80% black
+        ? ["#3b82f6", "#f59e0b"] // Blue and orange only
         : colors;
       
       particles = [];
@@ -225,20 +208,13 @@ export default function Particles() {
     createParticles();
     animate();
 
-    let resizeTimeout: ReturnType<typeof setTimeout>;
-    const onResize = () => {
-      // Debounce resize on mobile
-      if (isMobile) {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          resize();
-          createParticles();
-        }, 200);
-      } else {
+    // On mobile, don't listen for resize at all
+    if (!isMobile) {
+      window.addEventListener("resize", () => {
         resize();
         createParticles();
-      }
-    };
+      });
+    }
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
@@ -252,7 +228,6 @@ export default function Particles() {
       mouseY = -1000;
     };
 
-    window.addEventListener("resize", onResize);
     // Only add mouse listeners on desktop
     if (!isMobile) {
       window.addEventListener("mousemove", onMouseMove);
@@ -260,14 +235,19 @@ export default function Particles() {
     }
 
     return () => {
-      window.removeEventListener("resize", onResize);
       if (!isMobile) {
+        window.removeEventListener("resize", () => {});
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseleave", onMouseLeave);
       }
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [isMobile]);
+
+  // Don't render particles on mobile
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <canvas

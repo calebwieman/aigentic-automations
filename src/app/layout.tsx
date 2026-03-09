@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Particles from "@/components/Particles";
 import CustomCursor from "@/components/CustomCursor";
+import MouseGlow from "@/components/MouseGlow";
+import StarsAndComets from "@/components/StarsAndComets";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,7 +28,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased overflow-x-hidden`}>
         {/* Mesh gradient background */}
         <div className="mesh-gradient" aria-hidden="true" />
         
@@ -36,6 +38,12 @@ export default function RootLayout({
         
         {/* Particle effects */}
         <Particles />
+        
+        {/* Mouse glow effect */}
+        <MouseGlow />
+        
+        {/* Stars and comets */}
+        <StarsAndComets />
         
         {/* Custom cursor */}
         <CustomCursor />

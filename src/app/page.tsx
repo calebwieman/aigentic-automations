@@ -37,6 +37,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
+            <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm">Supported Apps</a>
             <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
             </a>
@@ -64,6 +65,7 @@ export default function Home() {
             <div className="flex flex-col py-4 gap-4">
               <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
+              <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Supported Apps</a>
               <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Get Started</a>
             </div>
           </div>
@@ -100,7 +102,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto"
             >
-              Leverage AI agents that save time and create value. 
+              Leverage agents that save time and create value. 
               Your digital workforce never stops, so you can focus on what matters.
             </motion.p>
 
@@ -174,13 +176,13 @@ export default function Home() {
                 { title: "Easy Setup", desc: "We build everything for you. No coding needed.", color: "orange", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
               ].map((feature, i) => (
                 <ScrollReveal key={feature.title} delay={i * 0.1}>
-                  <TiltCard>
+                  <TiltCard glowColor={feature.color}>
                     <div className="rounded-2xl p-8 min-h-56 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
                       {/* Icon container with glow */}
-                      <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/10 border border-${feature.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300`}>
+                      <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/10 border border-${feature.color}-500/30 flex items-center justify-center mb-4 md:group-hover:scale-110 md:group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300`}>
                         <AnimatedIcon icon={feature.icon} color={feature.color} />
                       </div>
-                      <h3 className={`text-xl font-semibold mb-2 text-white group-hover:text-${feature.color}-400 transition-colors`}>{feature.title}</h3>
+                      <h3 className={`text-xl font-semibold mb-2 text-white md:group-hover:text-${feature.color}-400 transition-colors`}>{feature.title}</h3>
                       <p className="text-gray-400">{feature.desc}</p>
                     </div>
                   </TiltCard>
@@ -208,10 +210,10 @@ export default function Home() {
               ].map((step, i) => (
                 <ScrollReveal key={step.num} delay={i * 0.15}>
                   <div className="text-center group">
-                    <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:border-white/40 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 border border-white/20 bg-transparent">
+                    <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 md:group-hover:scale-110 md:group-hover:border-white/40 md:group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 border border-white/20 bg-transparent">
                       <span className="text-3xl font-bold text-white/80">{step.num}</span>
                     </div>
-                    <h3 className={`text-xl font-semibold mb-3 text-white ${step.num === '3' ? 'group-hover:text-orange-400' : step.hover !== 'none' ? `group-hover:text-${step.hover}-400` : ''} transition-colors`}>{step.title}</h3>
+                    <h3 className={`text-xl font-semibold mb-3 text-white ${step.num === '3' ? 'md:group-hover:text-orange-400' : step.hover !== 'none' ? `md:group-hover:text-${step.hover}-400` : ''} transition-colors`}>{step.title}</h3>
                     <p className="text-gray-400">{step.desc}</p>
                   </div>
                 </ScrollReveal>
@@ -239,10 +241,10 @@ export default function Home() {
               ].map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 0.1}>
                   <GradientBorderCard color={item.color}>
-                    <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/10 border border-${item.color}-500/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`w-12 h-12 rounded-xl bg-${item.color}-500/10 border border-${item.color}-500/30 flex items-center justify-center mb-4 md:group-hover:scale-110 transition-all duration-300`}>
                       <AnimatedIcon icon={item.icon} color={item.color} />
                     </div>
-                    <h3 className={`text-lg font-semibold mb-2 text-white group-hover:text-${item.color}-400 transition-colors`}>{item.title}</h3>
+                    <h3 className={`text-lg font-semibold mb-2 text-white md:group-hover:text-${item.color}-400 transition-colors`}>{item.title}</h3>
                     <p className="text-gray-400 text-sm">{item.desc}</p>
                   </GradientBorderCard>
                 </ScrollReveal>
@@ -270,14 +272,14 @@ export default function Home() {
                   <TiltCard glowColor={i === 1 ? "orange" : "blue"}>
                     <div className="rounded-2xl p-6 z-30 transition-all duration-300 group relative overflow-hidden">
                       {/* Quote mark decoration */}
-                      <div className="absolute top-2 right-4 text-white/10 text-6xl font-serif leading-none opacity-30 group-hover:opacity-50 transition-opacity">"</div>
+                      <div className="absolute top-2 right-4 text-white/10 text-6xl font-serif leading-none opacity-30 md:group-hover:opacity-50 transition-opacity">"</div>
                       {/* Stars on hover - smaller, bottom right */}
-                      <div className="absolute bottom-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 right-4 text-xl opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                         ⭐⭐⭐⭐⭐
                       </div>
-                      <p className="text-gray-300 mb-4 group-hover:text-white transition-colors relative z-10">"{testimonial.quote}"</p>
+                      <p className="text-gray-300 mb-4 md:group-hover:text-white transition-colors relative z-10">"{testimonial.quote}"</p>
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 ${i === 1 ? 'bg-orange-500/10 border border-orange-500/30' : 'bg-blue-500/10 border border-blue-500/30'}`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center md:group-hover:scale-110 transition-all duration-300 ${i === 1 ? 'bg-orange-500/10 border border-orange-500/30' : 'bg-blue-500/10 border border-blue-500/30'}`}>
                           <span className="text-white font-semibold text-sm">{testimonial.name.split(" ").map(n => n[0]).join("")}</span>
                         </div>
                         <div>
@@ -312,8 +314,8 @@ export default function Home() {
               ].map((faq, i) => (
                 <ScrollReveal key={faq.q} delay={i * 0.1}>
                   <div className="z-30 rounded-xl p-6 transition-all duration-300 group cursor-pointer relative overflow-hidden border border-transparent hover:border-white/10" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/0 group-hover:bg-blue-500/50 transition-all duration-300 rounded-l-xl" />
-                    <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center gap-3">
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/0 md:group-hover:bg-blue-500/50 transition-all duration-300 rounded-l-xl" />
+                    <h3 className="text-lg font-semibold text-white md:group-hover:text-blue-400 transition-colors flex items-center gap-3">
                       <AnimatedIcon icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" color={i % 2 === 0 ? "blue" : "orange"} className="w-6 h-6" />
                       {faq.q}
                     </h3>
@@ -332,9 +334,9 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="z-30 rounded-3xl p-12 hover:shadow-[0_0_60px_rgba(59,130,246,0.2)] transition-all duration-500 group relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
               {/* Background glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-orange-500/5 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
               {/* Animated rings */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl opacity-0 md:group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative z-10">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to <span className="gradient-text-accent">save time</span>?</h2>
                 <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">Join hundreds of businesses already benefiting from custom automations.</p>

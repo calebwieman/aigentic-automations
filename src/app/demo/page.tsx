@@ -25,6 +25,7 @@ export default function Demo() {
           <div className="hidden md:flex items-center gap-6">
             <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
+            <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm">Supported Apps</a>
             <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
             </a>
@@ -52,6 +53,7 @@ export default function Demo() {
             <div className="flex flex-col py-4 gap-4">
               <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
+              <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Supported Apps</a>
               <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Get Started</a>
             </div>
           </div>

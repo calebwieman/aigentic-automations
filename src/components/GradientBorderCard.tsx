@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface GradientBorderCardProps {
   children: React.ReactNode;
@@ -15,7 +15,17 @@ export default function GradientBorderCard({
   className = "" 
 }: GradientBorderCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   
+  useEffect(() => {
+    // Disable on touch devices
+    setIsTouchDevice(
+      'ontouchstart' in window || 
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches
+    );
+  }, []);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   
@@ -26,6 +36,7 @@ export default function GradientBorderCard({
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouchDevice) return;
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const xPct = (e.clientX - rect.left) / rect.width - 0.5;
@@ -49,17 +60,16 @@ export default function GradientBorderCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        rotateX,
-        rotateY,
+        ...(isTouchDevice ? { rotateX: 0, rotateY: 0 } : { rotateX, rotateY }),
         transformStyle: "preserve-3d",
       }}
-      whileHover={{ scale: 1.02 }}
+      whileHover={isTouchDevice ? {} : { scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className={`relative group rounded-2xl ${className}`}
     >
       {/* Gradient border on hover */}
       <div 
-        className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className={`absolute -inset-[1px] rounded-2xl opacity-0 transition-opacity duration-300 ${isTouchDevice ? '' : 'group-hover:opacity-100'}`}
         style={{
           background: borderGradient,
           zIndex: -1,
@@ -75,7 +85,7 @@ export default function GradientBorderCard({
       >
         {/* Subtle inner glow on hover */}
         <div 
-          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className={`absolute inset-0 rounded-2xl transition-opacity duration-300 ${isTouchDevice ? 'opacity-0' : 'group-hover:opacity-100'}`}
           style={{
             background: `radial-gradient(circle at center, ${color === 'orange' ? 'rgba(249,115,22,0.1)' : 'rgba(59,130,246,0.1)'} 0%, transparent 70%)`,
           }}

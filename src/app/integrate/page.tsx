@@ -5,6 +5,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import TiltCard from "@/components/TiltCard";
 import ConnectAnimation from "@/components/integrate/ConnectAnimation";
 import ChatFlowAnimation from "@/components/integrate/ChatFlowAnimation";
+import BlueprintAnimation from "@/components/integrate/BlueprintAnimation";
+import WorkflowAnimation from "@/components/integrate/WorkflowAnimation";
+import BuildAnimation from "@/components/integrate/BuildAnimation";
+import RunAnimation from "@/components/integrate/RunAnimation";
 
 const steps = [
   {
@@ -216,10 +220,10 @@ function StepCard({ step, index, isLeft }: {
   return (
     <section className="h-screen flex items-center justify-center px-6 relative z-10 overflow-visible">
       {/* Connecting line segment */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent -translate-x-1/2" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent -translate-x-1/2 hidden md:block" />
       
       {/* Center dot */}
-      <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2 z-20 shadow-[0_0_20px_rgba(59,130,246,0.8)]" />
+      <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2 z-20 shadow-[0_0_20px_rgba(59,130,246,0.8)] hidden md:block" />
       
       {/* Step animation on opposite side */}
       <StepAnimation stepId={step.id} isLeft={isLeft} />
@@ -229,7 +233,7 @@ function StepCard({ step, index, isLeft }: {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
         viewport={{ once: false, margin: "-30%" }}
-        className={`max-w-md w-full ${isLeft ? 'mr-[50%] pr-12 text-right' : 'ml-[50%] pl-12 text-left'}`}
+        className={`max-w-[90vw] sm:max-w-md w-full ${isLeft ? 'mx-auto md:mr-[60%] md:pr-12 md:text-right' : 'mx-auto md:ml-[60%] md:pl-12 md:text-left'} text-center`}
       >
         <motion.div
           whileHover={{ scale: 1.02 }}
@@ -298,13 +302,12 @@ function StepCard({ step, index, isLeft }: {
             )}
             
             <div className="flex justify-center">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/40 transition-all"
+            <a 
+              href="/apps"
+              className="inline-block px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/40 transition-all"
             >
               {step.interactive} →
-            </motion.button>
+            </a>
             </div>
           </div>
         </motion.div>
@@ -316,7 +319,7 @@ function StepCard({ step, index, isLeft }: {
 
 // Simple decorative animations for each step using Framer Motion
 function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) {
-  const position = isLeft ? "right-[5%]" : "left-[80%]";
+  const position = isLeft ? "right-[5%]" : "left-[5%]";
   
   const animations = {
     1: ( // Connect - network constellation
@@ -325,69 +328,23 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
       </div>
     ),
     2: ( // Tell Us - chat flow
-      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] -translate-x-[25%]">
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
         <ChatFlowAnimation />
       </div>
     ),
-    3: ( // Design - grid pulse
-      <div className="relative w-[500px] h-[500px]">
-        <motion.div 
-          className="absolute inset-0 border border-blue-500/50 rounded-lg"
-          animate={{ scale: [1, 1.05, 1], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-        <motion.div 
-          className="absolute inset-4 border border-orange-500/50 rounded"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-        />
-        <motion.div 
-          className="absolute w-3 h-3 bg-orange-500 rounded-full"
-          animate={{ x: [0, 10, 0], y: [0, -10, 0] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          style={{ left: '45%', top: '45%' }}
-        />
+    3: ( // Design - workflow diagram
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
+        <WorkflowAnimation />
       </div>
     ),
-    4: ( // Build - spinning rings
-      <div className="relative w-[500px] h-[500px]">
-        <motion.div 
-          className="absolute inset-0 border-2 border-blue-500/50 rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div 
-          className="absolute inset-2 border border-orange-500/50 rounded-full"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div 
-          className="absolute inset-6 border border-blue-500/60 rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        />
+    4: ( // Build - assembly animation
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
+        <BuildAnimation />
       </div>
     ),
-    5: ( // Watch It Run - play pulse
-      <div className="relative w-[500px] h-[500px]">
-        <motion.div 
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <motion.div 
-            className="w-16 h-16 rounded-full bg-blue-500/40"
-            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0.9, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </motion.div>
-        <motion.div 
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <motion.div 
-            className="w-0 h-0 border-t-8 border-t-transparent border-l-[20px] border-l-orange-500 border-b-8 border-b-transparent"
-            animate={{ x: [0, 5, 0] }}
-            transition={{ duration: 1, repeat: Infinity }}
-          />
-        </motion.div>
+    5: ( // Watch It Run
+      <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
+        <RunAnimation />
       </div>
     ),
   };
