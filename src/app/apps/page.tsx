@@ -31,12 +31,10 @@ export default function AppsPage() {
         </a>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Supported <span className="text-blue-500">Apps</span>
+          Some of our Supported <span className="text-blue-500">Apps</span>
         </h1>
         <p className="text-xl text-gray-400 mb-12">
           Connect your favorite tools and automate your workflow.
-          <br />
-          <span className="text-blue-400">And many more!</span>
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
