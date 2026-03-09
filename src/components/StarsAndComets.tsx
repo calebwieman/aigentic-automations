@@ -15,6 +15,7 @@ interface Star {
 export default function StarsAndComets() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [showStars, setShowStars] = useState(false);
   
   // Generate stars once on mount
   const stars = useMemo<Star[]>(() => {
@@ -34,12 +35,15 @@ export default function StarsAndComets() {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Check pathname after mount
+    if (pathname === '/integrate' || pathname.startsWith('/integrate/')) {
+      setShowStars(true);
+    }
+  }, [pathname]);
 
-  // Only show on integrate page - check both with and without trailing slash
-  const isIntegratePage = pathname === '/integrate' || pathname.startsWith('/integrate/');
-  
-  if (!mounted || !isIntegratePage) return null;
+  // On server/initial render, show nothing to avoid hydration mismatch
+  // After mount, show if on integrate page
+  if (!mounted || !showStars) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 9999 }}>

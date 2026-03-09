@@ -350,7 +350,7 @@ function StepAnimation({ stepId, isLeft }: { stepId: number; isLeft: boolean }) 
   };
 
   return (
-    <div className={`hidden lg:block absolute top-1/2 -translate-y-1/2 ${position} overflow-visible`}>
+    <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 ${position} overflow-visible`}>
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
