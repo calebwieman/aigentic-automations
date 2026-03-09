@@ -58,6 +58,12 @@ export default function AppsPage() {
             Contact Us
           </a>
         </div>
+
+        <div className="mt-16 text-center border-t border-white/10 pt-8">
+          <p className="text-gray-500 italic">
+            "We can probably integrate with your toaster too. We're not saying we will, but we probably could."
+          </p>
+        </div>
       </div>
     </div>
   );
