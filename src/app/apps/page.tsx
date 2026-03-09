@@ -35,6 +35,8 @@ export default function AppsPage() {
         </h1>
         <p className="text-xl text-gray-400 mb-12">
           Connect your favorite tools and automate your workflow.
+          <br />
+          <span className="text-blue-400">And many more!</span>
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
