@@ -360,11 +360,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
               <img src="/logo.png?v=2" alt="Aigentic Automations" className="h-6 w-auto" />
-              <span className="text-gray-400 text-sm">© 2026 Aigentic Automations</span>
+              <span className="text-white text-sm">© 2026 Aigentic Automations</span>
             </div>
             
             <div className="flex items-center gap-6">
-              <a href="mailto:aigenticautomations@gmail.com" className="text-gray-500 hover:text-white transition-colors text-sm">Contact</a>
+              <a href="mailto:aigenticautomations@gmail.com" className="text-white hover:text-white/80 transition-colors text-sm">Contact</a>
             </div>
           </div>
         </footer>
