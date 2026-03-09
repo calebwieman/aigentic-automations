@@ -303,7 +303,7 @@ function StepCard({ step, index, isLeft }: {
             
             <div className="flex justify-center">
             <a 
-              href="/apps"
+              href={step.icon === 'connect' ? '/apps' : step.icon === 'message' ? '/workflows' : step.icon === 'design' ? '/designs' : step.icon === 'build' ? '/process' : '/casestudies'}
               className="inline-block px-6 py-3 rounded-xl border border-blue-500/50 text-blue-400 hover:bg-blue-500/40 transition-all"
             >
               {step.interactive} →
