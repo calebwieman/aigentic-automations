@@ -344,7 +344,7 @@ export default function Home() {
                   <a href="/contact" className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-105 text-center">
                     Get Free Consultation
                   </a>
-                  <a href="/integrate" className="w-full sm:w-auto px-8 py-4 glass-solid text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105 text-center">
+                  <a href="/integrate" className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all hover:scale-105 text-center">
                     How It Works
                   </a>
                 </div>
