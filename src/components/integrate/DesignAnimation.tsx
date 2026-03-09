@@ -36,7 +36,7 @@ const designElements: DesignElement[] = [
   { id: "text2", x: 50, y: 45, width: 0, height: 0, type: "text" },
   { id: "text3", x: 75, y: 45, width: 0, height: 0, type: "text" },
   // More boxes below
-  { id: "box425, y:", x:  60, width: 50, height: 20, type: "box" },
+  { id: "box4", x: 60, y: 65, width: 50, height: 20, type: "box" },
 ];
 
 export default function DesignAnimation() {
