@@ -55,6 +55,7 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Mesh gradient background */
@@ -63,6 +64,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   z-index: -1;
   overflow: hidden;
