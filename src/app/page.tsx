@@ -168,22 +168,32 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { title: "We Build Everything", desc: "Tell us what you need and we build it. No coding required.", color: "blue", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-                { title: "24/7 Running", desc: "Your automations work around the clock.", color: "orange", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { title: "Enterprise Security", desc: "Bank-level encryption keeps your data safe.", color: "blue", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-                { title: "100+ Integrations", desc: "Connect with Slack, Gmail, Notion, and more.", color: "orange", icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" },
-                { title: "Real-time Analytics", desc: "Track performance and see results.", color: "blue", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-                { title: "Easy Setup", desc: "We build everything for you. No coding needed.", color: "orange", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+                { title: "We Build Everything", desc: "Tell us what you need and we build it. No coding required.", color: "blue", icon: "M13 10V3L4 14h7v7l9-11h-7z", bullets: ["Custom workflows for your exact process", "We handle all the technical setup", "Ongoing maintenance included"] },
+                { title: "Works While You Sleep", desc: "Your automations run 24/7. No micromanaging.", color: "orange", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", bullets: ["Handles orders, emails, and scheduling", "Instant alerts when action is needed", "Never misses a follow-up"] },
+                { title: "Enterprise Security", desc: "Bank-level encryption. Your data stays yours.", color: "blue", icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", bullets: ["End-to-end encryption", "SOC 2 compliant infrastructure", "You own your data always"] },
+                { title: "100+ Integrations", desc: "Connect with the tools you already use.", color: "orange", icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z", bullets: ["Gmail, Slack, Notion, HubSpot", "Shopify, QuickBooks, Stripe", "Custom API connections available"] },
+                { title: "Real-time Analytics", desc: "See exactly what's working and what's not.", color: "blue", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", bullets: ["Dashboard with live metrics", "Weekly performance reports", "See hours saved and ROI"] },
+                { title: "Setup in Days, Not Months", desc: "Most clients are up and running within a week.", color: "orange", icon: "M13 10V3L4 14h7v7l9-11h-7z", bullets: ["We build everything for you", "One intro call to get started", "Ongoing support included forever"] },
               ].map((feature, i) => (
                 <ScrollReveal key={feature.title} delay={i * 0.1}>
                   <TiltCard glowColor={feature.color}>
-                    <div className="rounded-2xl p-8 min-h-56 z-30 transition-all duration-300 group relative overflow-hidden" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
+                    <div className="rounded-2xl p-8 min-h-72 z-30 transition-all duration-300 group relative overflow-hidden flex flex-col" style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 40%, #151515 100%)' }}>
                       {/* Icon container with glow */}
                       <div className={`w-12 h-12 rounded-xl bg-${feature.color}-500/10 border border-${feature.color}-500/30 flex items-center justify-center mb-4 md:group-hover:scale-110 md:group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300`}>
                         <AnimatedIcon icon={feature.icon} color={feature.color} />
                       </div>
                       <h3 className={`text-xl font-semibold mb-2 text-white md:group-hover:text-${feature.color}-400 transition-colors`}>{feature.title}</h3>
-                      <p className="text-gray-400">{feature.desc}</p>
+                      <p className="text-gray-400 mb-4">{feature.desc}</p>
+                      <ul className="space-y-2 mt-auto">
+                        {feature.bullets.map((bullet) => (
+                          <li key={bullet} className="flex items-start gap-2 text-gray-500 text-sm">
+                            <svg className={`w-4 h-4 ${feature.color === 'orange' ? 'text-orange-400' : 'text-blue-400'} flex-shrink-0 mt-0.5`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </TiltCard>
                 </ScrollReveal>
@@ -291,6 +301,184 @@ export default function Home() {
                   </TiltCard>
                 </ScrollReveal>
               ))}
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* Pricing */}
+      <ScrollReveal>
+        <section id="pricing" className="py-24 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">Simple, transparent <span className="gradient-text-accent">pricing</span></h2>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">No hidden fees. No surprises. Just results.</p>
+            </div>
+
+            {/* Website Pricing */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-white text-center mb-8">Websites</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                {[
+                  {
+                    name: "Starter",
+                    price: "$799",
+                    period: "build",
+                    monthly: "$79/mo",
+                    desc: "Perfect for single-location businesses getting started online.",
+                    features: ["Up to 5 pages", "Mobile responsive", "Contact form", "Basic SEO", "1 round of revisions"],
+                    highlight: false,
+                    color: "blue"
+                  },
+                  {
+                    name: "Standard",
+                    price: "$1,299",
+                    period: "build",
+                    monthly: "$129/mo",
+                    desc: "For growing businesses that need more pages and features.",
+                    features: ["Up to 8 pages", "Booking / scheduling", "Photo gallery", "Google Maps integration", "2 rounds of revisions"],
+                    highlight: true,
+                    color: "orange"
+                  },
+                  {
+                    name: "Growth",
+                    price: "$1,999",
+                    period: "build",
+                    monthly: "$199/mo",
+                    desc: "Full-featured site with e-commerce and advanced functionality.",
+                    features: ["Unlimited pages", "E-commerce ready", "Blog / SEO optimization", "Social media integration", "Unlimited revisions"],
+                    highlight: false,
+                    color: "blue"
+                  },
+                ].map((tier, i) => (
+                  <ScrollReveal key={tier.name} delay={i * 0.1}>
+                    <div className={`rounded-2xl p-8 transition-all duration-300 hover:scale-105 flex flex-col h-full ${tier.highlight ? 'border-2 border-orange-500/50 bg-gradient-to-br from-orange-900/20 to-transparent' : 'border border-white/10 bg-gradient-to-br from-gray-900/50 to-transparent'}`}>
+                      {tier.highlight && (
+                        <div className="text-center mb-4">
+                          <span className="inline-block px-3 py-1 bg-orange-500/20 text-orange-400 text-xs font-semibold rounded-full">MOST POPULAR</span>
+                        </div>
+                      )}
+                      <h3 className={`text-xl font-bold mb-2 ${tier.highlight ? 'text-orange-400' : 'text-white'}`}>{tier.name}</h3>
+                      <p className="text-gray-400 text-sm mb-4">{tier.desc}</p>
+                      <div className="mb-4">
+                        <span className="text-4xl font-bold text-white">{tier.price}</span>
+                        <span className="text-gray-500 text-sm ml-1">{tier.period}</span>
+                      </div>
+                      <div className="mb-4">
+                        <span className="text-gray-400 text-sm">Then </span>
+                        <span className="text-white font-semibold">{tier.monthly}</span>
+                        <span className="text-gray-500 text-sm"> maintenance</span>
+                      </div>
+                      <ul className="space-y-3 mb-8 flex-grow">
+                        {tier.features.map((feature) => (
+                          <li key={feature} className="flex items-center gap-3 text-gray-300 text-sm">
+                            <svg className={`w-5 h-5 ${tier.highlight ? 'text-orange-400' : 'text-blue-400'} flex-shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href="/contact"
+                        className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all hover:scale-105 mt-auto ${
+                          tier.highlight
+                            ? 'bg-orange-600 hover:bg-orange-500 text-white'
+                            : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
+                        }`}
+                      >
+                        Get Started
+                      </a>
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+
+            {/* Agent Pricing */}
+            <div>
+              <h3 className="text-2xl font-bold text-white text-center mb-8">AI Agents</h3>
+              <p className="text-gray-400 text-center max-w-2xl mx-auto mb-8">
+                Custom AI assistants that automate your repetitive tasks. Takes orders, sends emails, books appointments, and more — while you sleep.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                {[
+                  {
+                    name: "Agent Starter",
+                    price: "$2,500",
+                    period: "build",
+                    monthly: "$299/mo",
+                    desc: "One automated workflow. Perfect for a single repetitive task.",
+                    features: ["1 workflow (e.g. order processing)", "Connects 2-3 apps", "Email & Slack notifications", "Weekly check-in call", "48hr support response"],
+                    highlight: false,
+                    color: "blue"
+                  },
+                  {
+                    name: "Agent Business",
+                    price: "$4,500",
+                    period: "build",
+                    monthly: "$499/mo",
+                    desc: "2-3 workflows covering your main operations.",
+                    features: ["2-3 connected workflows", "Up to 8 integrations", "Custom training on your data", "Priority support", "Monthly strategy call"],
+                    highlight: true,
+                    color: "orange"
+                  },
+                  {
+                    name: "Agent Enterprise",
+                    price: "$8,000+",
+                    period: "build",
+                    monthly: "$799/mo+",
+                    desc: "Full automation suite. Everything your business needs.",
+                    features: ["Unlimited workflows", "Unlimited integrations", "Dedicated support", "On-site training", "Custom SLA"],
+                    highlight: false,
+                    color: "blue"
+                  },
+                ].map((tier, i) => (
+                  <ScrollReveal key={tier.name} delay={i * 0.1}>
+                    <div className={`rounded-2xl p-8 transition-all duration-300 hover:scale-105 flex flex-col h-full ${tier.highlight ? 'border-2 border-orange-500/50 bg-gradient-to-br from-orange-900/20 to-transparent' : 'border border-white/10 bg-gradient-to-br from-gray-900/50 to-transparent'}`}>
+                      {tier.highlight && (
+                        <div className="text-center mb-4">
+                          <span className="inline-block px-3 py-1 bg-orange-500/20 text-orange-400 text-xs font-semibold rounded-full">MOST POPULAR</span>
+                        </div>
+                      )}
+                      <h3 className={`text-xl font-bold mb-2 ${tier.highlight ? 'text-orange-400' : 'text-white'}`}>{tier.name}</h3>
+                      <p className="text-gray-400 text-sm mb-4">{tier.desc}</p>
+                      <div className="mb-4">
+                        <span className="text-4xl font-bold text-white">{tier.price}</span>
+                        <span className="text-gray-500 text-sm ml-1">{tier.period}</span>
+                      </div>
+                      <div className="mb-4">
+                        <span className="text-gray-400 text-sm">Then </span>
+                        <span className="text-white font-semibold">{tier.monthly}</span>
+                        <span className="text-gray-500 text-sm"> maintenance</span>
+                      </div>
+                      <ul className="space-y-3 mb-8 flex-grow">
+                        {tier.features.map((feature) => (
+                          <li key={feature} className="flex items-center gap-3 text-gray-300 text-sm">
+                            <svg className={`w-5 h-5 ${tier.highlight ? 'text-orange-400' : 'text-blue-400'} flex-shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href="/contact"
+                        className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all hover:scale-105 mt-auto ${
+                          tier.highlight
+                            ? 'bg-orange-600 hover:bg-orange-500 text-white'
+                            : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
+                        }`}
+                      >
+                        Get Started
+                      </a>
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+              <p className="text-center text-gray-500 text-sm mt-8">
+                All prices include hosting, maintenance, and ongoing support. No contracts required.
+              </p>
             </div>
           </div>
         </section>

@@ -42,7 +42,7 @@ export default function CustomCursor() {
       height: 32px;
       border-radius: 50%;
       border: 2px solid #3b82f6;
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.6), 0 0 50px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 5px rgba(59, 130, 246, 0.6), 0 0 10px rgba(59, 130, 246, 0.3);
       pointer-events: none;
       z-index: 99999;
       transition: transform 0.1s ease-out, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -117,7 +117,7 @@ export default function CustomCursor() {
       
       if (isHovering) {
         cursor.style.borderColor = "#f59e0b";
-        cursor.style.boxShadow = "0 0 30px rgba(245, 158, 11, 0.7), 0 0 60px rgba(245, 158, 11, 0.4)";
+        cursor.style.boxShadow = "0 0 6px rgba(245, 158, 11, 0.7), 0 0 12px rgba(245, 158, 11, 0.4)";
         cursor.style.transform = `translate(${currentX - 16}px, ${currentY - 16}px) scale(1.4)`;
         
         // Update trails to orange
@@ -126,7 +126,7 @@ export default function CustomCursor() {
         });
       } else {
         cursor.style.borderColor = "#3b82f6";
-        cursor.style.boxShadow = "0 0 25px rgba(59, 130, 246, 0.6), 0 0 50px rgba(59, 130, 246, 0.3)";
+        cursor.style.boxShadow = "0 0 5px rgba(59, 130, 246, 0.6), 0 0 10px rgba(59, 130, 246, 0.3)";
         cursor.style.transform = `translate(${currentX - 16}px, ${currentY - 16}px) scale(1)`;
         
         // Update trails back to blue
