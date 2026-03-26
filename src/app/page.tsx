@@ -406,9 +406,9 @@ export default function Home() {
                 {[
                   {
                     name: "Agent Starter",
-                    price: "$5,000",
+                    price: "$10,000",
                     period: "build",
-                    monthly: "$200/mo",
+                    monthly: "$400/mo",
                     desc: "One automated workflow. Perfect for a single repetitive task.",
                     features: ["1 workflow (e.g. order processing)", "Connects 2-3 apps", "Email & Slack notifications", "Weekly check-in call", "48hr support response"],
                     highlight: false,
@@ -416,9 +416,9 @@ export default function Home() {
                   },
                   {
                     name: "Agent Business",
-                    price: "$8,000",
+                    price: "$16,000",
                     period: "build",
-                    monthly: "$350/mo",
+                    monthly: "$700/mo",
                     desc: "2-3 workflows covering your main operations.",
                     features: ["2-3 connected workflows", "Up to 8 integrations", "Custom training on your data", "Priority support", "Monthly strategy call"],
                     highlight: true,
@@ -426,9 +426,9 @@ export default function Home() {
                   },
                   {
                     name: "Agent Enterprise",
-                    price: "$15,000+",
+                    price: "$30,000+",
                     period: "build",
-                    monthly: "$600/mo+",
+                    monthly: "$1,200/mo+",
                     desc: "Full automation suite. Everything your business needs.",
                     features: ["Unlimited workflows", "Unlimited integrations", "Dedicated support", "On-site training", "Custom SLA"],
                     highlight: false,
