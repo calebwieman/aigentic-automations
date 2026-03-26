@@ -44,7 +44,7 @@ export default function Contact() {
           <div className="hidden md:flex items-center gap-6">
             <a href="/#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
-            <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm">Supported Apps</a>
+            <a href="/work" className="text-gray-400 hover:text-white transition-colors text-sm">Our Work</a>
             <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
             </a>

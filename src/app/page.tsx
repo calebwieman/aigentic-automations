@@ -37,7 +37,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm">Features</a>
             <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm">How It Works</a>
-            <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm">Supported Apps</a>
+            <a href="/work" className="text-gray-400 hover:text-white transition-colors text-sm">Our Work</a>
             <a href="/contact" className="px-4 py-2 bg-white text-black rounded-lg font-medium text-sm hover:bg-gray-200 transition-colors">
               Get Started
             </a>
@@ -66,6 +66,7 @@ export default function Home() {
               <a href="#features" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Features</a>
               <a href="/integrate" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>How It Works</a>
               <a href="/apps" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Supported Apps</a>
+              <a href="/work" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Our Work</a>
               <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm px-4" onClick={() => setMobileMenuOpen(false)}>Get Started</a>
             </div>
           </div>
@@ -322,9 +323,9 @@ export default function Home() {
                 {[
                   {
                     name: "Starter",
-                    price: "$799",
+                    price: "$2,000",
                     period: "build",
-                    monthly: "$79/mo",
+                    monthly: "$75/mo",
                     desc: "Perfect for single-location businesses getting started online.",
                     features: ["Up to 5 pages", "Mobile responsive", "Contact form", "Basic SEO", "1 round of revisions"],
                     highlight: false,
@@ -332,19 +333,19 @@ export default function Home() {
                   },
                   {
                     name: "Standard",
-                    price: "$1,299",
+                    price: "$4,000",
                     period: "build",
-                    monthly: "$129/mo",
+                    monthly: "$100/mo",
                     desc: "For growing businesses that need more pages and features.",
-                    features: ["Up to 8 pages", "Booking / scheduling", "Photo gallery", "Google Maps integration", "2 rounds of revisions"],
+                    features: ["Up to 12 pages", "Booking / scheduling", "Photo gallery", "Google Maps integration", "2 rounds of revisions"],
                     highlight: true,
                     color: "orange"
                   },
                   {
                     name: "Growth",
-                    price: "$1,999",
+                    price: "$7,000",
                     period: "build",
-                    monthly: "$199/mo",
+                    monthly: "$175/mo",
                     desc: "Full-featured site with e-commerce and advanced functionality.",
                     features: ["Unlimited pages", "E-commerce ready", "Blog / SEO optimization", "Social media integration", "Unlimited revisions"],
                     highlight: false,
@@ -405,9 +406,9 @@ export default function Home() {
                 {[
                   {
                     name: "Agent Starter",
-                    price: "$2,500",
+                    price: "$5,000",
                     period: "build",
-                    monthly: "$299/mo",
+                    monthly: "$200/mo",
                     desc: "One automated workflow. Perfect for a single repetitive task.",
                     features: ["1 workflow (e.g. order processing)", "Connects 2-3 apps", "Email & Slack notifications", "Weekly check-in call", "48hr support response"],
                     highlight: false,
@@ -415,9 +416,9 @@ export default function Home() {
                   },
                   {
                     name: "Agent Business",
-                    price: "$4,500",
+                    price: "$8,000",
                     period: "build",
-                    monthly: "$499/mo",
+                    monthly: "$350/mo",
                     desc: "2-3 workflows covering your main operations.",
                     features: ["2-3 connected workflows", "Up to 8 integrations", "Custom training on your data", "Priority support", "Monthly strategy call"],
                     highlight: true,
@@ -425,9 +426,9 @@ export default function Home() {
                   },
                   {
                     name: "Agent Enterprise",
-                    price: "$8,000+",
+                    price: "$15,000+",
                     period: "build",
-                    monthly: "$799/mo+",
+                    monthly: "$600/mo+",
                     desc: "Full automation suite. Everything your business needs.",
                     features: ["Unlimited workflows", "Unlimited integrations", "Dedicated support", "On-site training", "Custom SLA"],
                     highlight: false,
